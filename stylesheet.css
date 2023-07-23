@@ -1,0 +1,221 @@
+.mockup-window {
+    width: 1200px;
+    height: 600px;
+}
+
+.Intro {
+    gap: 300px; /* Adjust the value as per your requirement */
+}
+
+
+.startingBody{
+    background-image: url("img/Main.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.aboutMeBody{
+    background-image: url("img/About.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.workBody{
+    background-image: url("img/Work.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fullColorAbout{
+    background-color: #F29F05;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.fullColorMain{
+    background-color: #F2B705;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.fullColorWork{
+    background-color: #04BFBF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.text-yellow {
+    color: #F2B705;
+}
+
+#navbar {
+    opacity: 0;
+    transition: opacity 1s ease; /* Add transition to the opacity property */
+  }
+
+.bigText{
+    font-size: 100px; /* Adjust the font size as needed */
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    color: white;
+    animation: fade-in 3s ease-out;
+}
+.titeText{
+    font-size: 90px; /* Adjust the font size as needed */
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 100px;
+    text-align: center;
+    padding-top: 20px;
+    animation: fade-in 3s ease-out;
+}
+
+
+  .card-title {
+    color: #ffffff; /* For example, set the card titles to red */
+  }
+
+.slow{
+    animation: fade-in 3s ease-out;
+}
+.slide-in-left{
+    animation: slide-in-left 2s ease-out;
+}
+
+.container {
+    display: flex; /* Use flexbox to arrange items horizontally */
+    align-items: center; /* Center items vertically within the container */
+    justify-content: center; /* Center items horizontally within the container */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.cardGaps{
+    gap: 30px;
+    animation: slide-up 3s ease;
+}
+
+.w-card-custom {
+    width: 1320px; /* Set your desired width here */
+}
+
+.h-card-custom {
+    height: 500px; /* Set your desired height here */
+}
+
+.w-card-custom-about {
+    width: 1330px; /* Set your desired width here */
+}
+
+.h-card-custom-about {
+    height: 500px; /* Set your desired height here */
+}
+
+.disabled-div {
+    pointer-events: none; /* Prevent interactions */
+    opacity: 0; /* Adjust the opacity to visually indicate it's disabled */
+}
+
+.startSlide{
+    animation: slide-in 1s ease-out;
+}
+
+/* Slide up */
+.slideUp{
+  animation: slide-up 3s ease;
+}
+.slideUp2{
+animation: slide-up 3.5s ease;
+}
+.slideUp3{
+animation: slide-up 4s ease;
+}
+.slideUp4{
+animation: slide-up 4.5s ease;
+}
+.slideUp5{
+animation: slide-up 5s ease;
+}
+
+/* Slide down */
+.slideDown{
+  animation: slide-down 3s ease;
+}
+.slideDown2{
+  animation: slide-down 3.5s ease;
+}
+.slideDown3{
+  animation: slide-down 4s ease;
+}
+.slideDown4{
+  animation: slide-down 4.5s ease;
+}
+
+
+@keyframes fade-in {
+    0% {
+      opacity: 0; /* Start with 0% opacity (invisible) */
+    }
+    100% {
+      opacity: 1; /* End with 100% opacity (fully visible) */
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%); /* Start from 100% of the element's width to the right */
+    }
+    to {
+      transform: translateX(0); /* Slide to the original position (0% offset) */
+    }
+  }
+  
+  @keyframes slide-in-left {
+    from {
+      transform: translateX(-100%); /* Start from 100% of the element's width to the right */
+    }
+    to {
+      transform: translateX(0); /* Slide to the original position (0% offset) */
+    }
+  }
+
+  @keyframes slide-up {
+    0% {
+      bottom: -1000px;
+    }
+    100% {
+      bottom: 0;
+    }
+  }
+  
+  @keyframes slide-down {
+    0% {
+        bottom: 0px;
+      }
+      100% {
+        bottom: -1000px;
+      }
+    }
