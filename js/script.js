@@ -47,7 +47,7 @@ function changeToAbout() {
     aboutDivElement.classList.remove('disabled-div');
     setTimeout(function() {
         window.location.href = 'about.html';
-    },1000);
+    },500);
     // You can add any other code you want to execute when the button is pressed here.
 }
 function changeToMain() {
@@ -57,7 +57,7 @@ function changeToMain() {
     mainDivElement.classList.remove('disabled-div');
     setTimeout(function() {
         window.location.href = 'index.html';
-    },1000);
+    },500);
     // You can add any other code you want to execute when the button is pressed here.
 }
 function changeToWork() {
@@ -67,8 +67,18 @@ function changeToWork() {
     workDivElement.classList.remove('disabled-div');
     setTimeout(function() {
         window.location.href = 'work.html';
-    },1000);
+    },500);
     // You can add any other code you want to execute when the button is pressed here.
+}
+function changeToContact() {
+   console.log("changeToContact");
+   var workDivElement = document.getElementById('contact');
+   workDivElement.classList.add('slide-in-left');
+   workDivElement.classList.remove('disabled-div');
+   setTimeout(function() {
+       window.location.href = 'contact.html';
+   },500);
+   // You can add any other code you want to execute when the button is pressed here.
 }
 
 function changeToTab(tab) {

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- Include daisyUI and Tailwind CSS stylesheets -->
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@3.3.1/dist/full.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="stylesheet.css">
+      <script src="js/particles.js"></script>
+      <script src="js/script.js"></script>
+   </head>
+   <body>
+      <!-- Main -->
+      <div class="fullColorContact">
+         <div class="ContactBody slow" id="particles-js">
+            <div class="navbar bg-white" id="navbar">
+               <div class="flex-1" style="cursor: pointer; z-index: 11;">
+                  <button class="btn btn-ghost normal-case text-xl text-black" onclick="changeToMain()">Home Page</button>
+                  <button class="btn btn-ghost normal-case text-xl text-black" onclick="changeToAbout()" >About me</button>
+                  <button class="btn btn-ghost normal-case text-xl text-black" onclick="changeToWork()" >My Work</button>
+                  <button class="btn btn-ghost normal-case text-xl text-black" onclick="" >Contact</button>
+               </div>
+            </div>
+            <div class="titeText w-100 h-100">
+               <h1 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Contact</h1>
+            </div>
+            <!-- Tabs 1 -->
+            <div class="container cardGaps slideUp" style="padding-top: 300px;" id="tab1">
+                <div class="card bg-orange-600 shadow-xl slideUp" style="width: 4000px; height: 650px;" id="card1">
+                   <figure><a style="font-size: 200px;">✉</a></figure>
+                   <div class="card-body">
+                      <h2 class="card-title text-white">
+                         Email
+                         <div class="badge badge-secondary">(Formal)</div>
+                      </h2>
+                      <p class="text-white">Feel free to get in touch with me via email below. Whether you have a project idea, collaboration proposal, or just want to say hello, I'd love to hear from you! Looking forward to connecting and exploring exciting opportunities together.</p>
+                      <div class="card-actions justify-end">
+                         <div class="badge badge-outline text-white"><a href="mailto:joelmaticbusiness@gmail.com?subject=Regarding%20your%20website&body=Hi%20there,%20I%20found%20your%20website%20interesting.%20..."  target="_blank" style="color: aqua;">joelmaticbusiness@gmail.com</a></div>
+                      </div>
+                   </div>
+                </div>
+                <div class="card bg-orange-600 shadow-xl slideUp2" style="width: 4000px; height: 650px;" id="card1">
+                    <figure><a style="font-size: 200px;">💻</a></figure>
+                    <div class="card-body">
+                       <h2 class="card-title text-white">
+                          Github
+                          <div class="badge badge-secondary">(Coding)</div>
+                       </h2>
+                       <p class="text-white">For code contributions, bug reports, or any collaboration on projects, you can reach me via GitHub: <a href="https://github.com/TheRealJoelmatic" target="_blank" style="color: aqua;">[@TheRealJoelmatic]</a>. Don't hesitate to open issues, submit pull requests, or simply drop a message on any repository. Let's work together to build innovative solutions and make the coding world a better place! Looking forward to connecting with fellow developers and enthusiasts.</p>
+                       <div class="card-actions justify-end">
+                          <div class="badge badge-outline text-white"><a href="https://github.com/TheRealJoelmatic" target="_blank" style="color: aqua;">@TheRealJoelmatic</a></div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="card bg-orange-600 shadow-xl slideUp3" style="width: 4000px; height: 650px;" id="card1">
+                    <figure><a style="font-size: 200px;">🕹</a></figure>
+                    <div class="card-body">
+                       <h2 class="card-title text-white">
+                          Discord
+                          <div class="badge badge-secondary">(Less Formal)</div>
+                       </h2>
+                       <p class="text-white">Connect with me on Discord: @joelmatic. Whether it's discussing tech, gaming, or just having a friendly chat, I'm always open to meeting new people and joining exciting communities. Feel free to send me a friend request or message, and let's share our passions and ideas together. Looking forward to chatting with you!</p>
+                       <div class="card-actions justify-end">
+                          <div class="badge badge-outline text-white">@joelmatic</div>
+                       </div>
+                    </div>
+                 </div>
+             </div>
+       </div>
+    </div>
+      <!-- About Me -->
+      <div class="fullColorAbout disabled-div" id="about">
+      </div>
+      <div class="fullColorMain disabled-div" id="main">
+      </div>
+      <div class="fullColorWork disabled-div" id="work">
+    </div>
+   </body>
+</html>
