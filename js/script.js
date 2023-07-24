@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get the navbar element
     const navbar = document.getElementById('navbar');
   
+    if (window.innerWidth > 1008) {
     // Add event listeners to the document to track mouse movements
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseover', handleMouseOver);
@@ -36,7 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to hide the navbar when the mouse leaves it
     navbar.addEventListener('mouseleave', () => {
       navbar.style.opacity = '0';
+
     });
+   }
+   else{
+      navbar.style.opacity = '1';
+      console.log("Tiney screen")
+   }
   });
   
 
@@ -73,7 +80,7 @@ function changeToWork() {
 function changeToContact() {
    console.log("changeToContact");
    var workDivElement = document.getElementById('contact');
-   workDivElement.classList.add('slide-in-left');
+   workDivElement.classList.add('startSlide');
    workDivElement.classList.remove('disabled-div');
    setTimeout(function() {
        window.location.href = 'contact.html';

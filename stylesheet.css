@@ -244,3 +244,97 @@ animation: slide-up 5s ease;
         bottom: -1000px;
       }
     }
+
+    @media screen and (max-width: 1008px) {
+      .container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally within the container */
+      }
+    
+      .bigText {
+        font-size: 30px; /* Adjust the font size for smaller screens */
+        align-items: center;
+        justify-content: center;
+      }
+    
+      .w-card-custom, .w-card-custom-about {
+        width: 100%; /* Adjust the card width to fit the screen */
+      }
+    
+      .h-card-custom, .h-card-custom-about {
+        height: auto; /* Allow the card height to adjust based on content */
+      }
+    
+      .cardGaps {
+        gap: 10px; /* Reduce the gap between cards for smaller screens */
+      }
+    
+      .card-title {
+        font-size: 24px; /* Adjust the font size for card titles on smaller screens */
+      }
+    
+      .card-text {
+        font-size: 16px; /* Adjust the font size for card content on smaller screens */
+      }
+    
+      /* Show the navbar on smaller screens */
+      .navbar {
+        opacity: 1;
+        scale: auto;
+      }
+
+      .phone-hide{
+        opacity: 0;
+        font-size: 0px;
+      }
+    }
+    @media screen and (max-height: 700px){
+      .bigText {
+        font-size: 30px; /* Adjust the font size for smaller screens */
+        padding-top: 50px;
+      }
+    
+      .cardGaps {
+        gap: 20px; /* Reduce the gap between cards for smaller screens */
+      }
+    
+      .card-title {
+        font-size: 20px; /* Adjust the font size for card titles on smaller screens */
+      }
+    
+      .card-text {
+        font-size: 14px; /* Adjust the font size for card content on smaller screens */
+      }
+    
+      /* Show the navbar on smaller screens */
+      #navbar {
+        opacity: 1;
+      }
+    }
+    @media screen and (max-height: 630px){
+      .bigText {
+        font-size: 30px; /* Adjust the font size for smaller screens */
+        padding-top: 50px;
+      }
+
+      .card-title {
+        font-size: 10px; /* Adjust the font size for card titles on smaller screens */
+      }
+    
+      .card-text {
+        font-size: 7px; /* Adjust the font size for card content on smaller screens */
+      }
+    
+      /* Show the navbar on smaller screens */
+      #navbar {
+        opacity: 1;
+      }
+
+      .w-card-custom {
+        width: 860px; /* Set your desired width here */
+      }
+    
+      .h-card-custom {
+        height: 350px; /* Set your desired height here */
+      }
+    }
