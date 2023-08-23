@@ -245,16 +245,18 @@ animation: slide-up 5s ease;
       }
     }
 
-    @media screen and (max-width: 1008px) {
+    @media screen and (max-width: 1024px) {
       .container {
         flex-direction: column; /* Stack items vertically */
         align-items: center; /* Center items horizontally within the container */
+        width: auto;
       }
     
       .bigText {
         font-size: 30px; /* Adjust the font size for smaller screens */
         align-items: center;
         justify-content: center;
+        width: auto;
       }
     
       .w-card-custom, .w-card-custom-about {
@@ -266,7 +268,7 @@ animation: slide-up 5s ease;
       }
     
       .cardGaps {
-        gap: 10px; /* Reduce the gap between cards for smaller screens */
+        gap: 20px; /* Reduce the gap between cards for smaller screens */
       }
     
       .card-title {
@@ -287,11 +289,31 @@ animation: slide-up 5s ease;
         opacity: 0;
         font-size: 0px;
       }
+
+      .navbar{
+        transform-origin: center center;
+      }
+
+      .flex-1{
+        display: flex;
+        justify-content: center; /* Center the buttons horizontally */
+        align-items: center;
+        font-size: 16px; /* Adjust font size for smaller screens */
+      }
+
+      .bigText {
+        font-size: 0px; /* Adjust the font size for smaller screens */
+      }
     }
     @media screen and (max-height: 700px){
       .bigText {
         font-size: 30px; /* Adjust the font size for smaller screens */
         padding-top: 50px;
+        width: auto;
+      }
+
+      .bigText {
+        font-size: 30px; /* Adjust the font size for smaller screens */
       }
     
       .cardGaps {
@@ -337,4 +359,87 @@ animation: slide-up 5s ease;
       .h-card-custom {
         height: 350px; /* Set your desired height here */
       }
+    }
+    
+    @media screen and (max-height: 300px){
+      .flex-1{
+        font-size: 6px; /* Adjust font size for smaller screens */
+      }
+
+      .bigText {
+        font-size: 0px; /* Adjust the font size for smaller screens */
+      }
+
+      .container{
+        justify-content: center; /* Center the buttons horizontally */
+        align-items: center;
+      }
+
+      .navbar{
+        opacity: 0px;
+        transform: scale(0);
+      }
+
+      .btn.text-xl {
+        font-size: 14px; /* Adjust the value as needed */
+        width: auto;
+        height: auto;
+        justify-content: center;
+      }
+    }
+
+    @media screen and (max-width: 470px){
+      .flex-1{
+        font-size: 6px; /* Adjust font size for smaller screens */
+      }
+
+      .bigText {
+        font-size: 0px; /* Adjust the font size for smaller screens */
+      }
+
+      .container{
+        justify-content: center; /* Center the buttons horizontally */
+        align-items: center;
+      }
+
+      .navbar{
+        transform-origin: center center;
+        font-size: 6px;
+      }
+
+      .btn.text-xl {
+        font-size: 14px; /* Adjust the value as needed */
+        width: auto;
+        height: auto;
+        justify-content: center;
+      }
+
+    }
+
+    @media screen and (max-width: 336px){
+      .flex-1{
+        font-size: 6px; /* Adjust font size for smaller screens */
+      }
+
+      .bigText {
+        font-size: 0px; /* Adjust the font size for smaller screens */
+      }
+
+      .container{
+        justify-content: center; /* Center the buttons horizontally */
+        align-items: center;
+      }
+
+      .navbar{
+        opacity: 0px;
+        transform: scale(0);
+      }
+
+      .btn.text-xl {
+        font-size: 14px; /* Adjust the value as needed */
+        width: auto;
+        height: auto;
+        justify-content: center;
+      }
+
     }
