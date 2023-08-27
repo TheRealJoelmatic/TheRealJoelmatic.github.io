@@ -1,46 +1,13 @@
-.mockup-window {
-    width: 1200px;
-    height: 600px;
-}
-
 .Intro {
-    gap: 300px; /* Adjust the value as per your requirement */
+  gap: 300px;
 }
 
+/**/
+/* Bodys of the pages (Used in all pages for there body)*/
+/**/
 
 .startingBody{
-    background-image: url("img/Main.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.aboutMeBody{
-    background-image: url("img/About.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.workBody{
-    background-image: url("img/Work.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.ContactBody{
-  background-image: url("img/Contact.png");
+  background-image: url("img/Main.png");
   background-size: cover;
   background-repeat: no-repeat;
   position: fixed;
@@ -49,128 +16,172 @@
   width: 100%;
   height: 100%;
 }
-
-.fullColorAbout{
-    background-color: #F29F05;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.fullColorMain{
-    background-color: #F2B705;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.fullColorWork{
-    background-color: #04BFBF;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.fullColorContact{
-  background-color: #3C6255;
+.aboutMeBody{
+  background-image: url("img/About.png");
+  background-size: cover;
+  background-repeat: no-repeat;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-
-.text-yellow {
-    color: #F2B705;
+.workBody{
+  background-image: url("img/Work.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.ContactBody{
+background-image: url("img/Contact.png");
+background-size: cover;
+background-repeat: no-repeat;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
 }
 
-#navbar {
-    opacity: 0;
-    transition: opacity 1s ease; /* Add transition to the opacity property */
-  }
+/**/
+/* Text Styleing */
+/**/
 
-.bigText{
-    font-size: 100px; /* Adjust the font size as needed */
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-    color: white;
-    animation: fade-in 3s ease-out;
-}
-.titeText{
-    font-size: 90px; /* Adjust the font size as needed */
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-    color: white;
-    padding: 100px;
-    text-align: center;
-    padding-top: 20px;
-    animation: fade-in 3s ease-out;
+.bigText{ /* Used im index.html for the big side text */
+font-size: 100px;
+font-weight: bold;
+font-family: Arial, sans-serif;
+color: white;
+animation: fade-in 3s ease-out;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.titeText{ /* Used im all pages for the big top text */
+font-size: 90px;
+font-weight: bold;
+font-family: Arial, sans-serif;
+color: white;
+padding: 100px;
+text-align: center;
+padding-top: 20px;
+animation: fade-in 3s ease-out;
+}
 
-  .card-title {
-    color: #ffffff; /* For example, set the card titles to red */
-  }
-  .card-text {
-    color: #dddddd; /* For example, set the card titles to red */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.card-title { /* Used im all cards across the pages */
+color: #ffffff;
+}
+
+.card-text { /* Used im all cards across the pages */
+color: #dddddd;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/**/
+/* Card Styleing (Thats noit text) */
+/**/
+
 .container {
-    display: flex; /* Use flexbox to arrange items horizontally */
-    align-items: center; /* Center items vertically within the container */
-    justify-content: center; /* Center items horizontally within the container */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-.cardGaps{
-    gap: 30px;
-    animation: slide-up 3s ease;
+  display: flex; /* Use flexbox to arrange items horizontally */
+  align-items: center; /* Center items vertically within the container */
+  justify-content: center; /* Center items horizontally within the container */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.w-card-custom {
-    width: 1320px; /* Set your desired width here */
+.card{
+  width: 1320px;
+  height: 500px;
+  align-items: center;
 }
 
-.h-card-custom {
-    height: 500px; /* Set your desired height here */
-}
-
-.w-card-custom-about {
-    width: 1330px; /* Set your desired width here */
+.cardGaps{ /* Adds gaps and a animation */
+gap: 30px;
+animation: slide-up 3s ease;
 }
 
 .h-card-custom-about {
-    height: 500px; /* Set your desired height here */
+height: 500px; /* Set your desired height here */
 }
 
+.w-card-custom-about {
+width: 1330px; /* Set your desired width here */
+}
+
+/**/
+/* Other usefull stuff */
+/**/
+
+#navbar {
+  opacity: 0;
+  transition: opacity 1s ease; /* Add transition to the opacity property */
+  cursor: pointer;
+  z-index: 11;
+}
 .disabled-div {
-    pointer-events: none; /* Prevent interactions */
-    opacity: 0; /* Adjust the opacity to visually indicate it's disabled */
+  pointer-events: none; /* Prevent interactions */
+  opacity: 0; /* Adjust the opacity to visually indicate it's disabled */
+}
+
+/**/
+/* Transitions */
+/**/
+
+.fullColorAbout{
+background-color: #F29F05;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+.fullColorMain{
+background-color: #F2B705;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+.fullColorWork{
+background-color: #04BFBF;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+.fullColorContact{
+background-color: #3C6255;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
 }
 
 .startSlide{
-    animation: slide-in 0.5s ease-out;
+  animation: slide-in 0.5s ease-out;
 }
-
 .slow{
-  animation: fade-in 3s ease-out;
+animation: fade-in 3s ease-out;
 }
 .slide-in-left{
-  animation: slide-in-left 0.5s ease-out;
+animation: slide-in-left 0.5s ease-out;
 }
 
-
-/* Slide up */
+/**/
+/* Transitions slide up */
+/**/
 .slideUp{
-  animation: slide-up 3s ease;
+animation: slide-up 3s ease;
 }
 .slideUp2{
 animation: slide-up 3.5s ease;
@@ -185,261 +196,242 @@ animation: slide-up 4.5s ease;
 animation: slide-up 5s ease;
 }
 
-/* Slide down */
+/**/
+/* Transitions slide down */
+/**/
 .slideDown{
-  animation: slide-down 3s ease;
+animation: slide-down 3s ease;
 }
 .slideDown2{
-  animation: slide-down 3.5s ease;
+animation: slide-down 3.5s ease;
 }
 .slideDown3{
-  animation: slide-down 4s ease;
+animation: slide-down 4s ease;
 }
 .slideDown4{
-  animation: slide-down 4.5s ease;
+animation: slide-down 4.5s ease;
 }
 
-
+/**/
+/* The animations */
+/**/
 @keyframes fade-in {
-    0% {
-      opacity: 0; /* Start with 0% opacity (invisible) */
+  0% {
+    opacity: 0; /* Start with 0% opacity (invisible) */
+  }
+  100% {
+    opacity: 1; /* End with 100% opacity (fully visible) */
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(100%); /* Start from 100% of the element's width to the right */
+  }
+  to {
+    transform: translateX(0); /* Slide to the original position (0% offset) */
+  }
+}
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%); /* Start from 100% of the element's width to the right */
+  }
+  to {
+    transform: translateX(0); /* Slide to the original position (0% offset) */
+  }
+}
+@keyframes slide-up {
+  0% {
+    bottom: -1000px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+@keyframes slide-down {
+  0% {
+      bottom: 0px;
     }
     100% {
-      opacity: 1; /* End with 100% opacity (fully visible) */
-    }
-  }
-
-  @keyframes slide-in {
-    from {
-      transform: translateX(100%); /* Start from 100% of the element's width to the right */
-    }
-    to {
-      transform: translateX(0); /* Slide to the original position (0% offset) */
-    }
-  }
-  
-  @keyframes slide-in-left {
-    from {
-      transform: translateX(-100%); /* Start from 100% of the element's width to the right */
-    }
-    to {
-      transform: translateX(0); /* Slide to the original position (0% offset) */
-    }
-  }
-
-  @keyframes slide-up {
-    0% {
       bottom: -1000px;
     }
-    100% {
-      bottom: 0;
-    }
-  }
+}
+
+/**/
+/* Make this work on a smaller screen */
+/**/
+
+@media screen and (max-width: 1024px) {
   
-  @keyframes slide-down {
-    0% {
-        bottom: 0px;
-      }
-      100% {
-        bottom: -1000px;
-      }
+    .bigText {
+      font-size: 30px; /* Adjust the font size for smaller screens */
+      align-items: center;
+      justify-content: center;
+      width: auto;
+    }
+  
+    .w-card-custom, .w-card-custom-about {
+      width: 100%; /* Adjust the card width to fit the screen */
+    }
+  
+    .h-card-custom, .h-card-custom-about {
+      height: auto; /* Allow the card height to adjust based on content */
+    }
+  
+    .cardGaps {
+      gap: 20px; /* Reduce the gap between cards for smaller screens */
+    }
+  
+    .card-title {
+      font-size: 24px; /* Adjust the font size for card titles on smaller screens */
+    }
+  
+    .card-text {
+      font-size: 16px; /* Adjust the font size for card content on smaller screens */
+    }
+  
+    /* Show the navbar on smaller screens */
+    .navbar {
+      opacity: 1;
+      scale: auto;
     }
 
-    @media screen and (max-width: 1024px) {
-      .container {
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center items horizontally within the container */
-        width: auto;
-      }
-    
-      .bigText {
-        font-size: 30px; /* Adjust the font size for smaller screens */
-        align-items: center;
-        justify-content: center;
-        width: auto;
-      }
-    
-      .w-card-custom, .w-card-custom-about {
-        width: 100%; /* Adjust the card width to fit the screen */
-      }
-    
-      .h-card-custom, .h-card-custom-about {
-        height: auto; /* Allow the card height to adjust based on content */
-      }
-    
-      .cardGaps {
-        gap: 20px; /* Reduce the gap between cards for smaller screens */
-      }
-    
-      .card-title {
-        font-size: 24px; /* Adjust the font size for card titles on smaller screens */
-      }
-    
-      .card-text {
-        font-size: 16px; /* Adjust the font size for card content on smaller screens */
-      }
-    
-      /* Show the navbar on smaller screens */
-      .navbar {
-        opacity: 1;
-        scale: auto;
-      }
-
-      .phone-hide{
-        opacity: 0;
-        font-size: 0px;
-      }
-
-      .navbar{
-        transform-origin: center center;
-      }
-
-      .flex-1{
-        display: flex;
-        justify-content: center; /* Center the buttons horizontally */
-        align-items: center;
-        font-size: 16px; /* Adjust font size for smaller screens */
-      }
-
-      .bigText {
-        font-size: 0px; /* Adjust the font size for smaller screens */
-      }
-    }
-    @media screen and (max-height: 700px){
-      .bigText {
-        font-size: 30px; /* Adjust the font size for smaller screens */
-        padding-top: 50px;
-        width: auto;
-      }
-
-      .bigText {
-        font-size: 30px; /* Adjust the font size for smaller screens */
-      }
-    
-      .cardGaps {
-        gap: 20px; /* Reduce the gap between cards for smaller screens */
-      }
-    
-      .card-title {
-        font-size: 20px; /* Adjust the font size for card titles on smaller screens */
-      }
-    
-      .card-text {
-        font-size: 14px; /* Adjust the font size for card content on smaller screens */
-      }
-    
-      /* Show the navbar on smaller screens */
-      #navbar {
-        opacity: 1;
-      }
-    }
-    @media screen and (max-height: 630px){
-      .bigText {
-        font-size: 30px; /* Adjust the font size for smaller screens */
-        padding-top: 50px;
-      }
-
-      .card-title {
-        font-size: 10px; /* Adjust the font size for card titles on smaller screens */
-      }
-    
-      .card-text {
-        font-size: 7px; /* Adjust the font size for card content on smaller screens */
-      }
-    
-      /* Show the navbar on smaller screens */
-      #navbar {
-        opacity: 1;
-      }
-
-      .w-card-custom {
-        width: 860px; /* Set your desired width here */
-      }
-    
-      .h-card-custom {
-        height: 350px; /* Set your desired height here */
-      }
-    }
-    
-    @media screen and (max-height: 300px){
-      .flex-1{
-        font-size: 6px; /* Adjust font size for smaller screens */
-      }
-
-      .bigText {
-        font-size: 0px; /* Adjust the font size for smaller screens */
-      }
-
-      .container{
-        justify-content: center; /* Center the buttons horizontally */
-        align-items: center;
-      }
-
-      .navbar{
-        opacity: 0px;
-        transform: scale(0);
-      }
-
-      .btn.text-xl {
-        font-size: 14px; /* Adjust the value as needed */
-        width: auto;
-        height: auto;
-        justify-content: center;
-      }
+    .phone-hide{
+      opacity: 0;
+      font-size: 0px;
     }
 
-    @media screen and (max-width: 470px){
-      .flex-1{
-        font-size: 6px; /* Adjust font size for smaller screens */
-      }
-
-      .bigText {
-        font-size: 0px; /* Adjust the font size for smaller screens */
-      }
-
-      .container{
-        justify-content: center; /* Center the buttons horizontally */
-        align-items: center;
-      }
-
-      .navbar{
-        transform-origin: center center;
-        font-size: 6px;
-      }
-
-      .btn.text-xl {
-        font-size: 14px; /* Adjust the value as needed */
-        width: auto;
-        height: auto;
-        justify-content: center;
-      }
-
+    .navbar{
+      transform-origin: center center;
     }
 
-    @media screen and (max-width: 336px){
-      .flex-1{
-        font-size: 6px; /* Adjust font size for smaller screens */
-      }
-
-      .bigText {
-        font-size: 0px; /* Adjust the font size for smaller screens */
-      }
-
-      .container{
-        justify-content: center; /* Center the buttons horizontally */
-        align-items: center;
-      }
-
-      .navbar{
-        opacity: 0px;
-        transform: scale(0);
-      }
-
-      .btn.text-xl {
-        font-size: 14px; /* Adjust the value as needed */
-        width: auto;
-        height: auto;
-        justify-content: center;
-      }
-
+    .navbar{
+      display: flex;
+      justify-content: center; /* Center the buttons horizontally */
+      align-items: center;
+      font-size: 16px; /* Adjust font size for smaller screens */
     }
+
+    .bigText {
+      font-size: 0px; /* Adjust the font size for smaller screens */
+    }
+}
+@media screen and (max-height: 700px){
+    .bigText {
+      font-size: 30px; /* Adjust the font size for smaller screens */
+      padding-top: 50px;
+      width: auto;
+    }
+
+    .bigText {
+      font-size: 30px; /* Adjust the font size for smaller screens */
+    }
+  
+    .cardGaps {
+      gap: 20px; /* Reduce the gap between cards for smaller screens */
+    }
+  
+    .card-title {
+      font-size: 20px; /* Adjust the font size for card titles on smaller screens */
+    }
+  
+    .card-text {
+      font-size: 14px; /* Adjust the font size for card content on smaller screens */
+    }
+  
+    /* Show the navbar on smaller screens */
+    #navbar {
+      opacity: 1;
+    }
+}
+@media screen and (max-height: 630px){
+    .bigText {
+      font-size: 30px; /* Adjust the font size for smaller screens */
+      padding-top: 50px;
+    }
+
+    .card-title {
+      font-size: 10px; /* Adjust the font size for card titles on smaller screens */
+    }
+  
+    .card-text {
+      font-size: 7px; /* Adjust the font size for card content on smaller screens */
+    }
+  
+    /* Show the navbar on smaller screens */
+    #navbar {
+      opacity: 1;
+    }
+
+    .w-card-custom {
+      width: 860px; /* Set your desired width here */
+    }
+  
+    .h-card-custom {
+      height: 350px; /* Set your desired height here */
+    }
+}
+@media screen and (max-height: 300px){
+    .flex-1{
+      font-size: 6px; /* Adjust font size for smaller screens */
+    }
+
+    .bigText {
+      font-size: 0px; /* Adjust the font size for smaller screens */
+    }
+
+    .navbar{
+      opacity: 0px;
+      transform: scale(0);
+    }
+
+    .btn.text-xl {
+      font-size: 14px; /* Adjust the value as needed */
+      width: auto;
+      height: auto;
+      justify-content: center;
+    }
+}
+@media screen and (max-width: 470px){
+    .flex-1{
+      font-size: 6px; /* Adjust font size for smaller screens */
+    }
+
+    .bigText {
+      font-size: 0px; /* Adjust the font size for smaller screens */
+    }
+
+    .navbar{
+      transform-origin: center center;
+      font-size: 6px;
+    }
+
+    .btn.text-xl {
+      font-size: 14px; /* Adjust the value as needed */
+      width: auto;
+      height: auto;
+      justify-content: center;
+    }
+
+}
+@media screen and (max-width: 336px){
+    .flex-1{
+      font-size: 6px; /* Adjust font size for smaller screens */
+    }
+
+    .bigText {
+      font-size: 0px; /* Adjust the font size for smaller screens */
+    }
+
+    .navbar{
+      opacity: 0px;
+      transform: scale(0);
+    }
+
+    .btn.text-xl {
+      font-size: 14px; /* Adjust the value as needed */
+      width: auto;
+      height: auto;
+      justify-content: center;
+    }
+
+}
