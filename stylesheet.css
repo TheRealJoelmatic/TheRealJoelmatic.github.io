@@ -25,7 +25,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: scroll
 }
 .workBody{
   background-image: url("img/Work.png");
@@ -36,7 +35,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: scroll
 }
 .ContactBody{
 background-image: url("img/Contact.png");
@@ -47,9 +45,7 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-overflow: scroll
 }
-
 
 /**/
 /* Text Styleing */
@@ -73,10 +69,6 @@ padding: 100px;
 text-align: center;
 padding-top: 20px;
 animation: fade-in 3s ease-out;
-}
-
-.card-title:hover{
-  text-decoration: underline;
 }
 
 .card-title { /* Used im all cards across the pages */
@@ -109,15 +101,6 @@ justify-content: center;
   height: 500px;
   align-items: center;
 }
-.home-card{
-  width: 1320px;
-  height: 500px;
-  align-items: center;
-}
-
-.card:hover {
-  transform: scale(1.01);
-}
 
 .cardGaps{ /* Adds gaps and a animation */
 gap: 30px;
@@ -130,24 +113,6 @@ height: 500px; /* Set your desired height here */
 
 .w-card-custom-about {
 width: 1330px; /* Set your desired width here */
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-/**/
-/* Scroll bar */
-/**/
-
-::-webkit-scrollbar {
-  width: 10px;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #333;
-  border-radius: 10px;
 }
 
 /**/
@@ -323,13 +288,6 @@ animation: slide-down 4.5s ease;
     .card-text {
       font-size: 16px; /* Adjust the font size for card content on smaller screens */
     }
-
-    .card{
-      min-width: 900px;
-      max-width: 900px;
-      min-height: 600px;
-      transform: translate(0%, 100%);
-    }
   
     /* Show the navbar on smaller screens */
     .navbar {
@@ -355,32 +313,6 @@ animation: slide-down 4.5s ease;
 
     .bigText {
       font-size: 0px; /* Adjust the font size for smaller screens */
-    }
-
-    .container{
-      display: flex;
-      flex-direction: column;
-    }
-
-    .titeText{
-      font-size: 140px;
-    }
-
-    @keyframes slide-up {
-      0% {
-        bottom: 0px;
-      }
-      100% {
-        bottom: 0px;
-      }
-    }
-    @keyframes slide-down {
-      0% {
-          bottom: 0px;
-        }
-        100% {
-          bottom: 0px;
-        }
     }
 }
 @media screen and (max-height: 700px){
