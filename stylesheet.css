@@ -25,6 +25,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: scroll;
 }
 .workBody{
   background-image: url("img/Work.png");
@@ -35,6 +36,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: scroll;
 }
 .ContactBody{
 background-image: url("img/Contact.png");
@@ -45,6 +47,7 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
+overflow: scroll;
 }
 
 /**/
@@ -113,6 +116,20 @@ height: 500px; /* Set your desired height here */
 
 .w-card-custom-about {
 width: 1330px; /* Set your desired width here */
+}
+
+/**/
+/* Scroll bar */
+/**/
+
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 10px;
 }
 
 /**/

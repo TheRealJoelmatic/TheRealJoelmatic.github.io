@@ -1,0 +1,110 @@
+/**/
+/* This is for all the pages that are not index.html cus im too slow to Make anything work how its ment to */
+/**/
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+
+  .w-card-custom, .w-card-custom-about {
+    width: 100%; /* Adjust the card width to fit the screen */
+  }
+
+  .h-card-custom, .h-card-custom-about {
+    height: auto; /* Allow the card height to adjust based on content */
+  }
+
+  .cardGaps {
+    gap: 20px; /* Reduce the gap between cards for smaller screens */
+  }
+
+  .card-title {
+    font-size: 24px; /* Adjust the font size for card titles on smaller screens */
+  }
+
+  .card-text {
+    font-size: 16px; /* Adjust the font size for card content on smaller screens */
+  }
+
+  .card{
+    min-width: 900px;
+    max-width: 900px;
+    min-height: 600px;
+    transform: translate(0%, 100%);
+  }
+
+  /* Show the navbar on smaller screens */
+  .navbar {
+    opacity: 1;
+    scale: auto;
+  }
+
+  .phone-hide{
+    opacity: 0;
+    font-size: 0px;
+  }
+
+  .navbar{
+    transform-origin: center center;
+  }
+
+  .navbar{
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center;
+    min-height: 160px;
+  }
+
+
+  .bigText {
+    font-size: 0px; /* Adjust the font size for smaller screens */
+  }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .titeText{
+    font-size: 140px;
+  }
+
+  .tabs{
+    transform: scale(3);
+  }
+
+  @keyframes slide-up {
+    0% {
+      bottom: 0px;
+    }
+    100% {
+      bottom: 0px;
+    }
+  }
+  @keyframes slide-down {
+    0% {
+        bottom: 0px;
+      }
+      100% {
+        bottom: 0px;
+      }
+  }
+}
+
+@media screen and (max-height: 700px){
+}
+
+@media screen and (max-height: 630px){
+}
+
+@media screen and (max-height: 300px){
+}
+
+@media screen and (max-width: 470px){
+
+}
+
+@media screen and (max-width: 336px){
+}
