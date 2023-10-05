@@ -1,8 +1,12 @@
+var IsMoblie;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Get the navbar element
     const navbar = document.getElementById('navbar');
   
     if (window.innerWidth > 1008) {
+
+   IsMoblie = false;
     // Add event listeners to the document to track mouse movements
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseover', handleMouseOver);
@@ -42,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
    }
    else{
       navbar.style.opacity = '1';
+      IsMoblie = true;
       console.log("Tiney screen")
    }
   });
@@ -134,6 +139,13 @@ function changeToTab(tab) {
 
 
     if (tab == 2) {
+      if(IsMoblie == true){
+         tab2.classList.remove('disabled-div');
+         tab1.classList.add('disabled-div');
+         tabButton2.classList.add('tab-active');
+         return;
+      }
+
         tabButton2.classList.add('tab-active');
 
         tab1.classList.add('slideDown');
@@ -153,6 +165,14 @@ function changeToTab(tab) {
             card8.classList.add('slideUp4');
         }, 2000);
     } else if (tab == 1) {
+
+      if(IsMoblie == true){
+         tab1.classList.remove('disabled-div');
+         tab2.classList.add('disabled-div');
+         tabButton1.classList.add('tab-active');
+         return;
+      }
+
         tabButton1.classList.add('tab-active');
 
         tab2.classList.add('slideDown');
