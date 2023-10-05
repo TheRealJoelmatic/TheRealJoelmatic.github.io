@@ -21,18 +21,37 @@
   }
 
   .card-title {
-    font-size: 24px; /* Adjust the font size for card titles on smaller screens */
+    font-size: 70px; /* Adjust the font size for card titles on smaller screens */
+    transform: translate(0%, -30%);
   }
 
   .card-text {
-    font-size: 16px; /* Adjust the font size for card content on smaller screens */
+    font-size: 40px; /* Adjust the font size for card content on smaller screens */
+  }
+  .text-white{
+    font-size: 40px;
+  }
+  .card-actions{
+    transform: scale(0);
+  }
+  .badge{
+    transform: scale(0);
   }
 
   .card{
     min-width: 900px;
     max-width: 900px;
-    min-height: 600px;
-    transform: translate(0%, 100%);
+    min-height: 900px;
+  }
+
+  .btn{
+    min-width: 200px;
+    min-height: 100px;
+    font-size: 50px;
+    z-index: 1000;
+  }
+  .nav-btn{
+    font-size: 40px;
   }
 
   /* Show the navbar on smaller screens */
@@ -75,6 +94,7 @@
     transform: scale(3);
   }
 
+
   @keyframes slide-up {
     0% {
       bottom: 0px;
@@ -96,10 +116,20 @@
 @media screen and (max-height: 700px){
 }
 
-@media screen and (max-height: 630px){
+@media screen and (max-height: 555px){
+
+  .titeText{
+    transform: scale(0);
+  }
+
 }
 
 @media screen and (max-height: 300px){
+
+  .titeText{
+    transform: scale(0);
+  }
+
 }
 
 @media screen and (max-width: 470px){

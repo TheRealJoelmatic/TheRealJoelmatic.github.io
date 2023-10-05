@@ -10,6 +10,16 @@
       <script src="js/script.js"></script>
       <meta charset="utf-8">
 
+
+      <!-- For card placement -->
+      <style>
+         @media screen and (max-width: 1024px) {
+            .card{
+               transform: translate(0%, 220%);
+            }
+         }
+      </style>
+
       <!-- The top bar -->
       <title>Work - Portfolio</title>
       <link rel="icon" href="https://avatars.githubusercontent.com/u/78729990?v=4" type="image/png">
@@ -35,10 +45,10 @@
          <!-- Nav Bar -->
          <div class="navbar bg-white" id="navbar">
             <div class="flex-1">
-               <button class="btn btn-ghost normal-case text-xl text-black" onclick="changeToMain()">Home Page</button>
-               <button class="btn btn-ghost normal-case text-xl text-black" onclick="changeToAbout()" >About me</button>
-               <button class="btn btn-ghost normal-case text-xl text-black" onclick="" >My Work</button>
-               <button class="btn btn-ghost normal-case text-xl text-black" onclick="changeToContact()" >Contact</button>
+               <button class="btn btn-ghost normal-case text-black nav-btn" onclick="changeToMain()">Home Page</button>
+               <button class="btn btn-ghost normal-case text-black nav-btn" onclick="changeToAbout()" >About me</button>
+               <button class="btn btn-ghost normal-case text-black nav-btn" onclick="" >My Work</button>
+               <button class="btn btn-ghost normal-case text-black nav-btn" onclick="changeToContact()" >Contact</button>
             </div>
          </div>
          <div class="titeText w-100 h-100">
@@ -72,7 +82,7 @@
             </div>
             <div class="card card-Work w-96 bg-base-100 shadow-xl image-full slideUp3" >
                <figure class="">
-                  <img src="./img/EsT.jpg" alt="Shoes" class="rounded-xl" style="height: 500px;"/>
+                  <img src="https://raw.githubusercontent.com/TheRealJoelmatic/TheRealJoelmatic.github.io/main/img/Et.JPG" alt="Shoes" class="rounded-xl" style="height: 500px;"/>
                </figure>
                <div class="card-body items-center text-center">
                   <h2 class="card-title">Eraser Trainer</h2>

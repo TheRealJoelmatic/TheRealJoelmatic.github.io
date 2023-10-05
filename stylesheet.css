@@ -147,6 +147,10 @@ width: 1330px; /* Set your desired width here */
   opacity: 0; /* Adjust the opacity to visually indicate it's disabled */
 }
 
+.nav-btn{
+  font-size: larger;
+}
+
 /**/
 /* Transitions */
 /**/

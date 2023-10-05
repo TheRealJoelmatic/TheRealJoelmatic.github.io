@@ -10,6 +10,16 @@
       <script src="js/script.js"></script>
       <meta charset="utf-8">
 
+      <!-- For card placement -->
+      <style>
+         @media screen and (max-width: 1024px) {
+            .card{
+               transform: translate(0%, 150%);
+            }
+         }
+      </style>
+
+
       <title>About - Portfolio</title>
 
       <meta name="description" content="Explore the captivating work of Joel Doherty, a visionary artist whose creations transcend the boundaries of imagination and reality. Joel Doherty's art is a mesmerizing blend of bold colors, intricate details, and thought-provoking themes that leave a lasting impression on all who encounter it. With an innovative approach to various mediums, including painting, sculpture, and digital art, Doherty's portfolio is a testament to his boundless creativity and versatility.">
@@ -33,10 +43,10 @@
          <div class="aboutMeBody slow" id="particles-js">
             <div class="navbar bg-white" id="navbar">
                <div class="flex-1" style="cursor: pointer; z-index: 11;">
-                  <button class="btn btn-ghost normal-case text-xl text-black" onclick="changeToMain()">Home Page</button>
-                  <button class="btn btn-ghost normal-case text-xl text-black" onclick="" >About me</button>
-                  <button class="btn btn-ghost normal-case text-xl text-black" onclick="changeToWork()" >My Work</button>
-                  <button class="btn btn-ghost normal-case text-xl text-black" onclick="changeToContact()" >Contact</button>
+                  <button class="btn btn-ghost normal-case text-black nav-btn" onclick="changeToMain()">Home Page</button>
+                  <button class="btn btn-ghost normal-case text-black nav-btn" onclick="" >About me</button>
+                  <button class="btn btn-ghost normal-case text-black nav-btn" onclick="changeToWork()" >My Work</button>
+                  <button class="btn btn-ghost normal-case text-black nav-btn" onclick="changeToContact()" >Contact</button>
                </div>
             </div>
             <div class="titeText w-100 h-100">
