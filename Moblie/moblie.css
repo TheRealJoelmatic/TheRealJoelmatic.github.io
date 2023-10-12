@@ -23,6 +23,7 @@
   .card-title {
     font-size: 70px; /* Adjust the font size for card titles on smaller screens */
     transform: translate(0%, -30%);
+    line-height: 2;
   }
 
   .card-text {
@@ -38,6 +39,9 @@
     transform: scale(0);
   }
 
+  .btn-primary{
+    z-index: 100;
+  }
   .card{
     min-width: 900px;
     max-width: 900px;
