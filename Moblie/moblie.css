@@ -16,6 +16,10 @@
     height: auto; /* Allow the card height to adjust based on content */
   }
 
+  .stopMoblieClick {
+    pointer-events: none;
+  }
+
   .cardGaps {
     gap: 20px; /* Reduce the gap between cards for smaller screens */
   }
