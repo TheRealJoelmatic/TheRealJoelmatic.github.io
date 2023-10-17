@@ -1,0 +1,38 @@
+@media screen and (max-width: 1024px) 
+{
+    body{
+        overflow-x: hidden;
+    }
+    .Title{
+        font-size: 60px;
+        align-items: center;
+    }
+    .blocky-card{
+        display: flex; /* Use flex display to arrange cards in a row */
+        flex-direction: column; /* Lay out cards vertically */
+        align-items: center;
+    }
+
+    .noti{
+        display: none;
+    }
+
+    .size-mb{
+        font-size: 120px !important;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        left: 0%;
+    }
+
+    .porject-mb{
+        width: 1024;
+        height: 200;
+    }
+
+    .porject-mb-tabs{
+        transform: scale(2);
+        margin: 0 auto !important;
+    }
+
+}
