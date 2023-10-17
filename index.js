@@ -187,25 +187,7 @@ function changeTextOnClick(element, newText, duration) {
     element.appendChild(children);
   }, duration);
 }
-window.onload = function() {
-    checkScreenSize();
-}
-function checkScreenSize() {
-  // Get the current window width
-  var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  var currentURL = window.location.href;
-  console.log("0" + " " + currentURL + " " + screenWidth);
-  if (screenWidth < 800) {
-    console.log("1");
-    if (!currentURL.includes('mobile.html')) {
-      // Redirect to the mobile page
-      console.log("2");
-      window.location.href = 'mobile.html';
-    }
-  }
-}
 
-window.addEventListener('resize', checkScreenSize);
 
 document.addEventListener("DOMContentLoaded", function() {
 
