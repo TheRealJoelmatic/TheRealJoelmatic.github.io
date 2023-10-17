@@ -192,6 +192,11 @@ window.onload = function() {
     function checkScreenSize() {
       // Get the current window width
       var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      var currentURL = window.location.href;
+
+      if (currentURL.includes('moblie.html')) {
+        return;
+    }
 
       // Check if the screen width is less than 800 pixels
       if (screenWidth < 800) {
