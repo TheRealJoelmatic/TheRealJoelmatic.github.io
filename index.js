@@ -188,33 +188,24 @@ function changeTextOnClick(element, newText, duration) {
   }, duration);
 }
 window.onload = function() {
-    ChangePage(0);
-    function checkScreenSize() {
-      // Get the current window width
-      var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-      var currentURL = window.location.href;
-
-      if (currentURL.includes('moblie.html')) {
-        return;
-    }
-
-      // Check if the screen width is less than 800 pixels
-      if (screenWidth < 800) {
-          // Redirect to another page
-          console.log(screenWidth);
-          window.location.href = 'moblie.html';
-      }
-    }
+    checkScreenSize();
 }
-
-function checkPage() {
+function checkScreenSize() {
+  // Get the current window width
   var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-
-  if (screenWidth < 800)
-  {
-    window.location.href = 'https://joelmatic.com/moblie.html';
+  var currentURL = window.location.href;
+  console.log("0" + " " + currentURL + " " + screenWidth);
+  if (screenWidth < 800) {
+    console.log("1");
+    if (!currentURL.includes('mobile.html')) {
+      // Redirect to the mobile page
+      console.log("2");
+      window.location.href = 'mobile.html';
+    }
   }
 }
+
+window.addEventListener('resize', checkScreenSize);
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -339,5 +330,3 @@ document.addEventListener("DOMContentLoaded", function () {
         "retina_detect": true
       });
   });
-
-  checkPage();
