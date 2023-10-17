@@ -196,6 +196,7 @@ window.onload = function() {
       // Check if the screen width is less than 800 pixels
       if (screenWidth < 800) {
           // Redirect to another page
+          console.log(screenWidth);
           window.location.href = 'moblie.html';
       }
     }
