@@ -20,13 +20,11 @@ body{
 .UserName{
     color: white;
     font-size: 25px;
-    padding-left: 40px;
 }
 
 .SmallerName{
     color: rgb(118, 125, 146);
     font-size: 20px;
-    padding-left: 40px;
 }
 
 .card:hover {
@@ -192,4 +190,20 @@ body{
 
 ::-webkit-scrollbar-corner {
     background: none;
+}
+
+.mobile-inv {
+    display: contents !important; /* Hidden by default for screens over 768px */
+}
+
+.main-inv {
+    display: none !important; /* Visible by default for screens over 768px */
+}
+@media (max-width: 768px) {
+    .main-inv {
+        display: contents !important; /* Hidden for screens under 768px */
+    }
+    .mobile-inv {
+        display: none !important; /* Visible for screens under 768px */
+    }
 }
