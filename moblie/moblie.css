@@ -103,13 +103,6 @@ body{
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.overlay img {
-    margin: 10% auto;
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-}
-
 .close-button {
     position: absolute;
     top: 10px;
