@@ -1,0 +1,209 @@
+body{
+    /*background-image: url('img/Bakcground.jpg');*/
+    background-color: rgb(23, 33, 46);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.Title{
+    margin-top: 150px;
+    color: rgb(255, 255, 255);
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 10px 10px 5px black;
+}
+
+.UserName{
+    color: white;
+    font-size: 25px;
+    padding-left: 40px;
+}
+
+.SmallerName{
+    color: rgb(118, 125, 146);
+    font-size: 20px;
+    padding-left: 40px;
+}
+
+.card:hover {
+    transform: scale(1.01);
+}
+
+.Title:hover{
+    transform: translateY(-4px);
+}
+.tabs_button:hover{
+    transform: translateY(-2px);
+}
+.arrowing:hover{
+    transform: scale(1.06);
+}
+.pfp:hover{
+    transform: scale(1.01);
+}
+.ebutton:hover{
+    transform: translateY(-2px);
+}
+.About-title{
+    color: white;
+    font-size: 40px;
+    align-items: center;
+    text-align: center;
+}
+
+.CardFont{
+    font-family: 'Mali', cursive;
+}
+.bestFont{
+    font-family: 'Pixelify Sans', sans-serif;
+}
+.bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This ensures the container takes the full viewport height */
+}
+.inv{
+    display: none;
+}
+.conveyor-belt {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.image-container {
+    cursor: pointer;
+}
+
+.arrow{
+    display: flex;
+    align-items: center; /* Center vertically */
+  }
+
+.active-Button{
+    color: #7289da !important;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay img {
+    margin: 10% auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.underLineEffect:hover{
+    text-decoration: underline;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.wave {
+    animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.5s;        /* Change to speed up or slow down */
+    animation-iteration-count: infinite;  /* Never stop waving :) */
+    transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+    display: inline-block;
+}
+
+.wave{
+    font-size: 48px;
+}
+
+@keyframes wave-animation {
+    0% { transform: rotate( 0.0deg) }
+    10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+    20% { transform: rotate(-8.0deg) }
+    30% { transform: rotate(14.0deg) }
+    40% { transform: rotate(-4.0deg) }
+    50% { transform: rotate(10.0deg) }
+    60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+    100% { transform: rotate( 0.0deg) }
+}
+
+/* Scrollbar size */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    transition: 1.0s;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(127, 127, 127, 0.6);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: 1.0s;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover,
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: rgb(110, 110, 110);
+    transition: 0.3s;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+
+::-webkit-scrollbar-thumb:vertical:active,
+::-webkit-scrollbar-thumb:horizontal:active {
+    background: rgba(95, 91, 91, 1);
+
+}
+
+::-webkit-scrollbar-corner {
+    background: none;
+}
+
+.mobile-inv {
+    display: none !important; /* Hidden by default for screens over 768px */
+}
+
+.main-inv {
+    display: contents !important; /* Visible by default for screens over 768px */
+}
+@media (max-width: 768px) {
+    .main-inv {
+        display: none !important; /* Hidden for screens under 768px */
+    }
+    .mobile-inv {
+        display: contents !important; /* Visible for screens under 768px */
+    }
+}

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="Main.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="./app.js"></script>
+        <script src="lib/particles.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div id="particles-js"></div>
+
+        <nav class="bg-black-100 bg-opacity-50">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="https://MC-Cheats.com" class="flex items-center">
+                    <img src="https://yt3.googleusercontent.com/ytc/APkrFKZWafQXhnhDIv9xcfYjTTMt9_gTERrBR0h7nguGAw=s176-c-k-c0x00ffffff-no-rj" class="h-8 w-8 rounded-full mr-3" alt="MC-Cheat Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-purple-500">Joelmatic.com/Cheats</span>
+                </a>
+                <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
+                    <li>
+                    <a href="./index.html" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-white md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Home
+                    </a>
+                    </li>
+                    <li>
+                    <a href="./cheats.html" class="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-purple-700 md:p-0 dark:text-white md:dark:text-purple-500">Cheats
+                        <div class="border-t-2 border-white-300 rounded"></div>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="https://www.youtube.com/c/Joelmatic" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-white md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Youtube</a>
+                    </li>
+                    <li>
+                    <a href="https://discord.gg/qA985Ar" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-white md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Discord</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t-2 border-white-100 rounded opacity-50"></div>
+        </nav>
+
+        <!-- 
+        Main video amd text
+        --->
+        <div style="display: flex; justify-content: center;">
+            <h1 class="text-white text-8xl textS" style="text-align: center;">
+                Find the perfect<br>
+                cheat for <span class="text-purple-700">YOU</span>
+                <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400" id="noCard">Voted NO.1 place to find FREE minecraft cheats.</p>
+            </h1>
+            
+        </div>
+
+        <!-- Search bar -->
+        <div style="width: 20%; margin: 0 auto; display: flex; justify-content: center;">
+            <div class="flex items-center" id="search-form"> <!-- Added an ID to the form -->
+                <label for="voice-search" class="sr-only">Search</label>
+                <div class="relative w-full">
+                    <input type="text" id="searchInput" oninput="search()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500" placeholder="Search for the perfect cheat for you" required>
+                </div>
+                <button id="search-button" onclick="search()" class="inline-flex items-center py-2.5 px-3 ml-2 text-sm font-medium text-white bg-purple-700 rounded-lg border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover-bg-purple-700 dark:focus:ring-purple-800">
+                    <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>Search
+                </button>
+            </div>
+        </div>
+        
+        <div class="cardContainer">
+            <!-- row 1 -->
+            <div class="flex justify-center">
+                <!-- Container for the card rows -->
+                <div class="flex flex-wrap justify-center">
+                    <!-- First Card -->
+                    <div class="card max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2">
+                        <a>
+                            <img class="rounded-t-lg" src="http://joelmatic.com/img/Autoclicker.jpg" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a>
+                                <h5 class="card-title mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">🌕 Matic clicker 🌕</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Minecraft auto-clicker developed in C++. This user-friendly and robust tool
+                                is designed to provide players with a seamless auto-clicking experience,
+                                allowing them to automate repetitive actions in Minecraft. Notably, this auto-clicker is powerful enough
+                                to bypass popular Minecraft servers like Hypixel and MMC.</p>
+                            <a href="https://tinyurl.com/yrydcwnz" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                Download
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                            <a href="https://youtu.be/BIrYvHSPnks?si=0FPET_CBK4tslgIC" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                video
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+            
+                    <!-- You can repeat this card structure to add more cards -->
+                    <!-- Second Card -->
+                    <div class="card max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2">
+                        <a>
+                            <img class="rounded-t-lg" src="./img/Akira.jpg" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a>
+                                <h5 class="card-title mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Akira Closet client | minemen club BYPASS</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">This tool is compatible with versions 1.8.9 and 1.7.10 and offers advanced features such as blockhit and configs. It is suitable for servers with more advanced anti-cheat systems, and can be used on clients like Badlion and Feather..</p>
+                            <a href="https://tinyurl.com/akira-client" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                Download
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                            <a href="https://youtu.be/e6T7bKBxwME?si=nRQ-eapI-iFdcW2l" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                video
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+            
+                    <!-- Third Card -->
+                    <div class="card max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2">
+                        <a>
+                            <img class="rounded-t-lg" src="./img/EXELON.jpg" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a>
+                                <h5 class="card-title mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">EXELON hack Client Best free Autoclicker | Hypixel Bypass</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Exelon is an auto clicker made to help you in Minecraft PVP. Not only will it click for you, but it can also help you in pot PVP fights. .</p>
+                            <a href="https://tinyurl.com/4fz54y4t" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                Download
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                            <a href="https://youtu.be/5LphR5grygo?si=loIvwRkOyn6MM9KM" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                video
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- row 2 -->
+            <div class="flex justify-center">
+                <!-- Container for the card rows -->
+                <div class="flex flex-wrap justify-center">
+                    <!-- First Card -->
+                    <div class="card max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2">
+                        <a>
+                            <img class="rounded-t-lg" src="./img/Raven B+.jpg" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a>
+                                <h5 class="card-title mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Raven B+ | The Best Ghost Client for HYPIXEL</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Raven B++ is a continuation of Raven B+ which was being handled by Kopamed. This project was made because Raven B+ was discontinued.</p>
+                            <a href="https://tinyurl.com/3nt95xuc" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                Download
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=U7-6GILza7c&t=5s" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                video
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+            
+                    <!-- You can repeat this card structure to add more cards -->
+                    <!-- Second Card -->
+                    <div class="card max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2">
+                        <a>
+                            <img class="rounded-t-lg" src="./img/null.jpg" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a>
+                                <h5 class="card-title mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Null Client</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Null client is another Minecraft hacks with cool features.</p>
+                            <a href="https://tinyurl.com/u8svexnf" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                Download
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                            <a href="https://youtu.be/1Tw_1NvjYe0?si=6BDgpJHMh0fU26xh" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                video
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+            
+                    <!-- Third Card -->
+                    <div class="card max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2">
+                        <a>
+                            <img class="rounded-t-lg" src="./img/skill.jpg" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a>
+                                <h5 class="card-title mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Skilled Client v2</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Skilled Client (1.8.9) is an awesome forge ghost client for users who like servers like hypixel, jartex, pika, etc. It provides features as aim assist, autoclicker, wtap, esp, tracers, autoblock and much more.</p>
+                            <a href="https://tinyurl.com/yaqz4ztf" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                Download
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                            <a href="https://youtu.be/DTdO0PANk_c?si=dZ64M3_-GnXuVAT_" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                                video
+                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+            Plant at the bottem right
+        -->
+        <div style="position: fixed; bottom: 0; right: 0; z-index: -10; margin-right: -300px; margin-bottom: -300px;">
+            <img src="img/planit.png" height="900" width="900" class="rounded-full mr-3" alt="MC-Cheat Logo" />
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+    </body>
+</html>
