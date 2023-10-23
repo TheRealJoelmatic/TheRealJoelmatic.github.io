@@ -191,12 +191,19 @@ function changeTextOnClick(element, newText, duration) {
 
 document.addEventListener("DOMContentLoaded", function() {
 
+  document.documentElement.classList.add('dark');
+
   var loadElement = document.getElementById("load");
   var mainElement = document.getElementById("main");
 
   if (loadElement) loadElement.remove();
   if (mainElement) mainElement.classList.remove("inv"); // Replace "property-name" with the specific property you want to remove
 
+});
+
+window.addEventListener('load', function () {
+      document.documentElement.classList.add('dark'); // 'dark' class defines your dark mode styles
+      localStorage.theme = 'dark'; // Store the theme preference
 });
 
 document.addEventListener("DOMContentLoaded", function () {
