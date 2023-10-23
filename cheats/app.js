@@ -33,6 +33,10 @@ function search() {
     }
 }
 
+window.addEventListener('load', function () {
+  document.documentElement.classList.add('dark'); // 'dark' class defines your dark mode styles
+  localStorage.theme = 'dark'; // Store the theme preference
+});
 document.addEventListener("DOMContentLoaded", function () {
     particlesJS("particles-js", {
         "particles": {
