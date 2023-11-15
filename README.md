@@ -18,7 +18,7 @@ You can see the live website in action at [Joelmatic.com](https://Joelmatic.com/
 
 ## 📚 Library's Used
 
-[![daisyui](https://raw.githubusercontent.com/saadeghi/files/main/daisyui3/banner.png)](https://github.com/saadeghi/daisyui)
+[![flowbite](https://flowbite.com/docs/images/og-image.png)](https://flowbite.com/)
 
 [![tailwindcss](https://repository-images.githubusercontent.com/106017343/7f21b24e-6744-4ca2-b035-4095a4ed3c1f
 )](https://github.com/tailwindlabs/tailwindcss)
