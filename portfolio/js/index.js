@@ -63,7 +63,7 @@ function ChangePage(page) {
     var image = $("#project-image");
     const title =  document.getElementById("project-Title");
     const contect =  document.getElementById("project-contect")
-    const link = $("#project-button");
+    var linkElement = document.getElementById("project-button-2");
     const buttonsArray = Array.from(buttons);
 
     for (let i = 0; i < buttonsArray.length; i++) {
@@ -78,6 +78,10 @@ function ChangePage(page) {
     currentpage = page;
     console.log("Added active-Button to: " + page);
 
+    if(linkElement){
+      console.log("a")
+    }
+
     if(currentpage == 0)
     {
         image.attr("src", "https://github.com/TheRealJoelmatic/RemoveAdblockThing/raw/main/Thumnail.jpg?raw=true");
@@ -89,7 +93,7 @@ function ChangePage(page) {
         message that is commonly displayed to users who attempt to watch videos on YouTube with ad-blocking <br>
         extensions enabled. The script was designed to enhance the user experience by allowing them to enjoy YouTube content<br>
         without being interrupted by advertisements.</p>`
-        link.attr("href", "https://github.com/TheRealJoelmatic/RemoveAdblockThing");
+        linkElement.href = "https://github.com/TheRealJoelmatic/RemoveAdblockThing";
     }
     else if(currentpage == 1){
         image.attr("src", "portfolio/img/Unlock.jpg");
@@ -101,7 +105,7 @@ function ChangePage(page) {
         within the popular game "Combat Master," all without resorting to traditional cheats or hacks. Instead,<br>
         it leverages the power of Melon Loader, a well-known modding framework, to provide users with a legitimate and enjoyable<br>
         way to access a wide range of soft and hard unlocks.</p>`;
-        link.attr("href", "https://github.com/TheRealJoelmatic/Combat-Master-Unlocker");
+        linkElement.href = "https://github.com/TheRealJoelmatic/Combat-Master-Unlocker";
         console.log("updated image to : " + currentpage);
     }
     else if(currentpage == 2){
@@ -110,10 +114,10 @@ function ChangePage(page) {
         contect.innerHTML = `<span style="color: white; font-size: 20px;"><br> Overview: </span><br>
           
         Minecraft auto-clicker developed in C++. This user-friendly and robust tool<br>
-         is designed to provide players with a seamless auto-clicking experience, <br>
-         allowing them to automate repetitive actions in Minecraft. Notably, this auto-clicker is powerful enough<br>
-          to bypass popular Minecraft servers like Hypixel and MMC.`;
-          link.attr("href", "https://github.com/TheRealJoelmatic/Matic-Clicker");
+        is designed to provide players with a seamless auto-clicking experience, <br>
+        allowing them to automate repetitive actions in Minecraft. Notably, this auto-clicker is powerful enough<br>
+        to bypass popular Minecraft servers like Hypixel and MMC.`;
+        linkElement.href = "https://github.com/TheRealJoelmatic/Matic-Clicker";
         console.log("updated image to : " + currentpage);
     }
     else if(currentpage == 3){
@@ -122,12 +126,12 @@ function ChangePage(page) {
         contect.innerHTML = `<span style="color: white; font-size: 20px;"><br> Overview: </span><br>
           
         mod menu created for the platformer game "Eraser."<br>
-         This versatile software enables players to access a wide array of features,<br>
-          including teleports, god mode, custom high jumps, and quick restarts for speedrunners,<br>
-           elevating their gameplay experience to new heights.<br>
-           this project showcases my expertise in developing trainers and mod menus,<br>
-            offering players the ability to enhance and personalize their gameplay experience `;
-            link.attr("href", "https://github.com/TheRealJoelmatic/Eraser-Trainer");
+        This versatile software enables players to access a wide array of features,<br>
+        including teleports, god mode, custom high jumps, and quick restarts for speedrunners,<br>
+        elevating their gameplay experience to new heights.<br>
+        this project showcases my expertise in developing trainers and mod menus,<br>
+        offering players the ability to enhance and personalize their gameplay experience `;
+        linkElement.href = "https://github.com/TheRealJoelmatic/Eraser-Trainer";
         console.log("updated image to : " + currentpage);
     }
     else if(currentpage == 4){
@@ -136,9 +140,9 @@ function ChangePage(page) {
         contect.innerHTML = `<span style="color: white; font-size: 20px;"><br> Overview: </span><br>
           
         high-speed Minecraft name checker developed in C++.<br>
-         This robust tool harnesses the power of proxies and multi-threading to provide <br>
-         users with a lightning-fast method of checking the availability of Minecraft usernames. `;
-         link.attr("href", "https://github.com/TheRealJoelmatic/McNameChecker");
+        This robust tool harnesses the power of proxies and multi-threading to provide <br>
+        users with a lightning-fast method of checking the availability of Minecraft usernames. `;
+        linkElement.href = "https://github.com/TheRealJoelmatic/McNameChecker";
         console.log("updated image to : " + currentpage);
     }
     else if(currentpage == 5){
@@ -147,7 +151,7 @@ function ChangePage(page) {
         contect.innerHTML = `<span style="color: white; font-size: 20px;"><br> Overview: </span><br>
           
         This is all the games I have coded using unity `;
-        link.attr("href", "https://joelmatic.itch.io/");
+        linkElement.href = "https://joelmatic.itch.io/";
         console.log("updated image to : " + currentpage);
     }
 
