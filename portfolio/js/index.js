@@ -84,7 +84,7 @@ function ChangePage(page) {
 
     if(currentpage == 0)
     {
-        image.attr("src", "https://github.com/TheRealJoelmatic/RemoveAdblockThing/raw/main/Thumnail.jpg?raw=true");
+        image.attr("src", "https://raw.githubusercontent.com/TheRealJoelmatic/RemoveAdblockThing/main/Thumbnail.jpg");
         console.log("updated image to : " + currentpage);
         title.innerHTML = `<span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Most Popular</span>Remove The Adblock Popup For YOUTUBE`;
         contect.innerHTML = `<span style="color: white; font-size: 20px;"><br> Overview: </span><br>
