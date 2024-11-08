@@ -5,6 +5,21 @@
     - https://github.com/tsenart/sight/blob/master/fonts/Consolas.ttf (font),
     - https://emerald.gg/images/dot.png (2x2 dot, inspiration and pattern CSS)
 */
+@font-face {
+  font-family: '8-bit Operator';
+  src: url('../fonts/Ac437_DG_One.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+
+  font-family: '8-bit Operator', consolas, sans-serif !important;
+}
+
+h1, h2, p {
+  font-family: '8-bit Operator', sans-serif !important;
+}
 
 #myDIV {
   width: 100%;
@@ -43,6 +58,7 @@ body,
 input {
   color: #e4e3e3;
   background-color: rgb(13, 13, 13);
+  font-family: '8-bit Operator', sans-serif;
 }
 
 @font-face {
@@ -82,6 +98,7 @@ input {
 
 body {
   overflow-x: hidden;
+  font-family: '8-bit Operator', sans-serif !important;
 }
 
 input {
@@ -107,6 +124,7 @@ pre {
 body,
 input {
   background-color: rgb(13, 13, 13);
+  font-family: '8-bit Operator', sans-serif !important;
 }
 
 .box {
@@ -226,4 +244,60 @@ input {
 
 ::-webkit-scrollbar {
   width: 0;
+}
+
+.glitch {
+	&:before, &:after {
+		display: block;
+		content: attr(data-glitch);
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 0.5; /* Lowered opacity */
+	} 
+	&:after {
+		color: #f0f;
+		z-index: -2;
+	} 
+	&:before {
+		color: #0ff;
+		z-index: -1;
+	}
+	&:hover {
+		&:before {
+			animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both 10; /* Reduced duration and iterations */
+		}
+		&:after {
+			animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) reverse both 10; /* Reduced duration and iterations */
+		}
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.glitch {
+		font-size: 3em;
+	}
+}
+
+@keyframes glitch {
+	0% {
+		transform: translate(0);
+	}
+	20% {
+		transform: translate(-2px, 2px); /* Reduced movement */
+	}
+	40% {
+		transform: translate(-2px, -2px); /* Reduced movement */
+	}
+	60% {
+		transform: translate(2px, 2px); /* Reduced movement */
+	}
+	80% {
+		transform: translate(2px, -2px); /* Reduced movement */
+	}
+	to {
+		transform: translate(0);
+	}
 }
