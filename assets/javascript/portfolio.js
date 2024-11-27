@@ -7,11 +7,17 @@ const mobileAndTabletCheck = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IE
 $(document).ready(() => {
   if (mobileAndTabletCheck()) {
     $('#background').replaceWith('<div id="background" style="background-image: url(assets/images/mobile-background.jpg);"></div>');
-
     app.shouldIgnoreVideo = true;
   }
 
-  app.titleChanger(['v', 'va','vav', 'vavy','vavy.cf']);
+  app.titleChanger(['v', 'va', 'vav', 'vavy', 'vavy.cf']);
+
+  // Change background color to black when skip-container is displayed
+  $('.skip-container').css('display', 'block'); // Ensure the skip container is displayed
+  $('body').css({
+    'background-image': 'none', // Remove any background image
+    'background-color': 'black' // Set the background color to black
+  });
 });
 
 if ($.cookie('videoTime')) {
@@ -126,6 +132,12 @@ const skipIntro = () => {
 
       $('.background').fadeIn(200, () => {
         if (!app.shouldIgnoreVideo) $('#audio').animate({ volume: app.musicVolume }, app.musicFadeIn);
+      });
+
+      // Reset background styles when the intro is skipped
+      $('body').css({
+        'background-image': 'url(./assets/background/bg.png)',
+        'background-color': ''
       });
     }, 200);
   });

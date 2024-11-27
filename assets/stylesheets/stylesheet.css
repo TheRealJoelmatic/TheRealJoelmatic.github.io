@@ -54,11 +54,20 @@ a {
   text-decoration: none;
 }
 
+body:has(.skip-container) {
+  background: #000 !important; /* Set background to black */
+  background-image: url('');
+}
+
 body,
 input {
   color: #e4e3e3;
   background-color: rgb(13, 13, 13);
   font-family: '8-bit Operator', sans-serif;
+  background-image: url('../background/bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 @font-face {

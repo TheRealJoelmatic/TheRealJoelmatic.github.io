@@ -54,6 +54,9 @@ h1, h2, p {
     text-decoration: none;
   }
   
+  body:has(.skip-container) {
+    background: #000 !important; /* Set background to black */
+}
   
   body,
   input {
