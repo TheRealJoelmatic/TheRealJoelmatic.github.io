@@ -1,163 +1,142 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>@Joelmatic</title>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@TheRealJoelmatic</title>
 
-  <meta name="description" content="Home Explore the work of Joelmatic or get in contact with me">
-  <meta name="keywords" content="@Joelmatic, Joelmatic,  @TheRealJoelmatic, TheRealJoelmatic , jmsolutions, jm, solutions, " />
-  <meta name="author" content="@Joelmatic" />
-  <meta property="og:title" content="Home - Joel matic">
-  <meta property="og:site_name" content="Portfolio">
-  <meta property="og:description" content="Home Explore the work of Joelmatic or get in contact with me">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:author" content="Joel matic">
-  <meta name="twitter:title" content="Home - Explore the work of Joelmatic or get in contact with me">
-  <meta name="twitter:description" content="Explore the captivating work of Joel matic, a visionary artist whose creations transcend the boundaries of imagination and reality. Joel matic's art is a mesmerizing blend of bold colors, intricate details, and thought-provoking themes that leave a lasting impression on all who encounter it.">
-  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/78729990?v=4">
+  
+  <meta name="description" content="@TheRealJoelmatic — Systems developer from England. C++, C, ASM." />
+  <meta name="keywords" content="@Joelmatic, Joelmatic, @TheRealJoelmatic, TheRealJoelmatic, jmsolutions, C++, systems, security" />
+  <meta name="author" content="@TheRealJoelmatic" />
+  <meta property="og:title" content="@TheRealJoelmatic" />
+  <meta property="og:site_name" content="joelmatic.com" />
+  <meta property="og:description" content="Systems developer from England. C++, C, ASM." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/78729990?v=4" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="@TheRealJoelmatic" />
+  <meta name="twitter:description" content="Systems developer from England. C++, C, ASM." />
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/78729990?v=4" />
 
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/78729990?v=4" type="image/x-icon" />
-  <link rel="stylesheet" type="text/css" href="assets/stylesheets/stylesheet.css" />
-  <link rel="stylesheet" type="text/css"
-    href="https://univevip.github.io/cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
 
-  <div id="myDIV" style="border-top-color: #AD1456"></div>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+  <link rel="stylesheet" href="assets/stylesheets/main.css" />
+  <link rel="stylesheet" href="assets/stylesheets/waybar.css" />
+  <link rel="stylesheet" href="assets/stylesheets/terminal.css" />
+  <link rel="stylesheet" href="assets/stylesheets/desktop.css" />
+  <link rel="stylesheet" href="assets/stylesheets/widgets.css" />
+  <link rel="stylesheet" href="assets/stylesheets/wm.css" />
 </head>
-
 <body>
-  <script type="text/javascript" src="assets/javascript/app.js"></script>
 
-  <div id="main">
-    <table class="box">
-      <tbody>
-        <tr>
-          <td><span id="line1" style="white-space: pre;"></span></td>
-        </tr>
-        <tr>
-          <td><span id="line2" style="white-space: pre;"></span></td>
-        </tr>
-        <tr>
-          <td><span id="line3 space" style="white-space: pre;"></span></td>
-        </tr>
-        <tr>
-          <td><span id="line4" style="white-space: pre;"></span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  
+  <header id="waybar" role="banner">
+    <div class="waybar-left">
+      <button class="waybar-launcher" aria-label="App Launcher" title="Launcher">
+        <i class="fa-brands fa-linux" aria-hidden="true"></i>
+      </button>
+    </div>
 
-  <div class="container" style="display: none;">
-    <center>
-      <img src="https://avatars.githubusercontent.com/u/78729990?v=4" alt="Profile Picture" class="profile-pic">
-      <br>
-    </center>
+    <div class="waybar-center" aria-live="polite">
+      <span class="waybar-window-title" id="window-title">ghostty — fastfetch</span>
+    </div>
 
-    <h1 class="brand-header">
-      <a>@TheRealJoelmatic</a>
-    </h1>
-    <br>
-    <p><span id="brand"></span></p>
+    <div class="waybar-right">
+      <span class="waybar-module waybar-clock" id="waybar-clock" title="Time">
+        <i class="fa-regular fa-clock" aria-hidden="true"></i>
+        <span id="time-display" aria-live="polite"></span>
+      </span>
+      <span class="waybar-sep" aria-hidden="true">|</span>
+      <span class="waybar-module" id="waybar-date" title="Date">
+        <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+        <span id="date-display" aria-live="polite"></span>
+      </span>
+    </div>
+  </header>
 
-    <br>
+  
+  <main id="desktop">
 
-    <center>
-      <br>
-      <br>
-      <a style="color: #949494;"><i>Info.hpp</i></a>
-      <br>
-      <br>
-      <a style="color: #0099ff;"><i>int </i></a>
-      <a style="color: #56fa8d;"><i>Age</i></a>
-      <a style="color: #949494;"><i> = </i></a>
-      <a class="whiteInfo"> 16;</a>
-      <br>
-      <a style="color: #0099ff;"><i>const char* </i></a>
-      <a style="color: #56fa8d;"><i>Country</i></a>
-      <a style="color: #949494;"><i> = </i></a>
-      <a class="whiteInfo"> "England";</a>
-      <br>
-      <a style="color: #0099ff;"><i>const char* </i></a>
-      <a style="color: #56fa8d;"><i>Languages</i></a>
-      <a style="color: #0099ff;"><i>[]</i></a>
-      <a style="color: #949494;"><i> = </i></a>
-      <a class="whiteInfo"> { "C++", "C", "ASM" };</a>
-      <br>
-      <br>
-      <a style="color: #949494;"><i>/*</i></a>
-      <br>
-      <br>
-      <br>
-      <a style="color: #949494;"><i>[internal links]</i></a>
-      <br>
-      <br>
-      <a class="clickables" href="portfolio.html">[portfolio]</a>
-      <a class="clickables" href="vouch.html">[vouches]</a>
-      <br>
-      <br>
-      <br>
-      <br>
-      <a style="color: #949494;"><i>[external links]</i></a>
-      <br>
-      <br>
-      <a class="clickables" href="https://github.com/TheRealJoelmatic" target="_blank" rel="https://joelmatic.com/">[github.com]</a>
-      <a class="clickables" href="https://www.unknowncheats.me/forum/members/4739560.html" target="_blank" rel="https://joelmatic.com/">[unknowncheats.me]</a>
-      <a class="clickables" href="https://wakatime.com/@Joelmatic" target="_blank" rel="https://joelmatic.com/">[wakatime.com]</a>
-      <a class="clickables" href="https://jmsolutions.dev/" target="_blank" rel="https://joelmatic.com/">[jmsolutions.dev]</a>
-      <br>
-      <br>
-      <br>
-      <br>
-      <a style="color: #949494;"><i>[contact]</i></a>
-      <br>
-      <br>
-      <a class="clickables" onclick="copyText('@joelmatic')">[discord]</a>
-      <a class="clickables" onclick="copyText('joelmaticbusiness@gmail.com')" >[email]</a>
-      <br>
-      <br>
-      <br>
-      <a style="color: #949494;"><i>*/</i></a>
-    </center>
-  </div>
+    
+    <section class="desktop-left" aria-label="Terminal">
+      <div class="window terminal-window" id="terminal-fastfetch">
+        <div class="window-titlebar" aria-hidden="true">
+          <span class="window-title-text">ghostty — fastfetch</span>
+        </div>
+        <div class="window-content terminal-content" id="fastfetch-output" role="region" aria-label="About Me">
+          
+        </div>
+      </div>
+    </section>
 
+    
+    <section class="desktop-right" aria-label="Links and Info">
 
+      <div class="window browser-window" id="widget-links">
+        <div class="window-titlebar" aria-hidden="true">
+          <span class="window-title-text">chromium — localhost:3000</span>
+        </div>
+        <div class="window-content browser-window-content" id="links-content">
+          
+        </div>
+      </div>
 
-  <div class="background" style="display: none;">
-    <div id="pattern"></div>
+      <div class="window terminal-window" id="widget-pipes">
+        <div class="window-titlebar" aria-hidden="true">
+          <span class="window-title-text">ghostty — pipes.sh</span>
+        </div>
+        <div class="window-content terminal-content" id="pipes-term-output" role="region" aria-label="Pipes Screensaver">
+          
+        </div>
+      </div>
 
-    <audio id="audio" loop="">
-      <source src="" type="audio/mp3" />
-      <script>
-        const audio = document.getElementById('audio');
+    </section>
+  </main>
 
-        app.audioElement = audio;
-        app.audioElement.volume = 0;
-      </script>
-    </audio>
+  <noscript>
+    <style>#desktop,#waybar{display:none}</style>
+    <p style="font-family:monospace;color:#cdd6f4;background:#1e1e2e;padding:2rem;text-align:center">
+      JavaScript is required to view this site.
+    </p>
+  </noscript>
 
-    <video id="background" loop="">
-      <source src="" type="video/mp4" />
-      <script>
-        const video = document.getElementById('background');
-
-        app.videoElement = video;
-        app.videoElement.volume = 0;
-      </script>
-    </video>
-  </div>
-
-  <div class="skip-container">
-    <i><a id="click-to-enter" class="skip glitch" data-glitch="[click to enter]">[click to enter]</a></i>
-  </div>
-
-  <script type="text/javascript" src="assets/javascript/lib/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/lib/jquery.marquee.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/lib/jquery.cookie.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/lib/typed.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/portfolio.js"></script>
-  <script type="text/javascript" src="assets/javascript/analytics.js"></script>
+  
+  <script src="assets/javascript/modules/fastfetch.js"></script>
+  
+  <script src="assets/javascript/modules/apps/app-utils.js"></script>
+  <script src="assets/javascript/modules/apps/editor.js"></script>
+  <script src="assets/javascript/modules/apps/htop.js"></script>
+  <script src="assets/javascript/modules/apps/cava.js"></script>
+  <script src="assets/javascript/modules/apps/nemo.js"></script>
+  <script src="assets/javascript/modules/apps/nyancat.js"></script>
+  <script src="assets/javascript/modules/apps/game2048.js"></script>
+  <script src="assets/javascript/modules/apps/snake.js"></script>
+  <script src="assets/javascript/modules/apps/minesweeper.js"></script>
+  <script src="assets/javascript/modules/apps/pong.js"></script>
+  <script src="assets/javascript/modules/apps/breakout.js"></script>
+  <script src="assets/javascript/modules/apps/doom.js"></script>
+  <script src="assets/javascript/modules/rofi.js"></script>
+  <script src="assets/javascript/modules/calendar.js"></script>
+  <script src="assets/javascript/modules/waybar.js"></script>
+  <script src="assets/javascript/modules/focus.js"></script>
+  <script src="assets/javascript/modules/wm.js"></script>
+  <script src="assets/javascript/modules/vfs.js"></script>
+  <script src="assets/javascript/modules/terminal.js"></script>
+  <script src="assets/javascript/modules/widgets.js"></script>
+  <script src="assets/javascript/modules/modal.js"></script>
+  <script src="assets/javascript/modules/pipes.js"></script>
+  <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/modules/welcome.js"></script>
 </body>
-
 </html>

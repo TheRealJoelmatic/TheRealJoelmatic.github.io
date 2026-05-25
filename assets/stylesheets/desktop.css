@@ -1,0 +1,153 @@
+
+
+#desktop {
+  position: fixed;
+  top: var(--waybar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: var(--gap);
+  padding: var(--gap);
+  background-color: var(--crust);
+  
+  background-image:
+    radial-gradient(ellipse 70% 60% at 8%  20%, rgba(203, 166, 247, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 55% at 92% 85%, rgba(137, 180, 250, 0.08) 0%, transparent 55%),
+    url('../background/bg.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+
+#desktop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--surface0) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+.desktop-left {
+  width: 50%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.desktop-left .window {
+  flex: 1;
+  animation-delay: 0.1s;
+}
+
+
+.desktop-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.desktop-right .window:nth-child(1) {
+  flex: 1;
+  animation-delay: 0.2s;
+}
+
+.desktop-right .window:nth-child(2) {
+  flex-shrink: 0;
+  height: 230px;
+  animation-delay: 0.3s;
+}
+
+
+.window.maximized {
+  position: fixed !important;
+  top: var(--waybar-height) !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: calc(100vh - var(--waybar-height)) !important;
+  z-index: 500 !important;
+  border-radius: 0 !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+
+@media (max-width: 780px) {
+  body, html { overflow: auto; }
+
+  #desktop {
+    flex-direction: column;
+    position: static;
+    min-height: calc(100vh - var(--waybar-height));
+    overflow: auto;
+    padding: 8px;
+    padding-top: calc(var(--waybar-height) + 8px);
+    gap: 8px;
+  }
+
+  .desktop-left {
+    width: 100% !important;
+    min-height: 320px;
+  }
+
+  .desktop-right {
+    min-height: 0;
+  }
+
+  .desktop-left .window,
+  .desktop-right .window {
+    height: auto;
+    min-height: 260px;
+  }
+
+  
+  .desktop-right .window:nth-child(1) {
+    min-height: 520px;
+  }
+
+  
+  .desktop-right .window:nth-child(2) {
+    height: auto;
+    min-height: 260px;
+  }
+
+  
+  .window.floating:not(.maximized) {
+    position: fixed !important;
+    inset: var(--waybar-height) 0 0 0 !important;
+    width: 100% !important;
+    height: calc(100vh - var(--waybar-height)) !important;
+    border-radius: 0 !important;
+    z-index: 800 !important;
+  }
+
+  
+  #wm-snap-preview { display: none !important; }
+
+  #waybar {
+    position: fixed;
+    padding: 0 8px;
+  }
+
+  
+  .waybar-center { display: none; }
+
+  
+  .waybar-module { padding: 3px 5px; }
+  .waybar-module span { display: none; }
+  .waybar-module i  { font-size: 13px; }
+  #waybar-clock span, #waybar-date span { display: inline; }
+}
