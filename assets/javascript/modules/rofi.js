@@ -28,6 +28,11 @@ window.Site = window.Site || {};
     { label: 'minesweeper', icon: 'fa-solid fa-bomb',                       winId: null, action: 'minesweeper' },
     { label: 'pong',        icon: 'fa-solid fa-table-tennis-paddle-ball',   winId: null, action: 'pong'        },
     { label: 'breakout',    icon: 'fa-solid fa-bars-staggered',             winId: null, action: 'breakout'    },
+    { label: 'asteroids',   icon: 'fa-solid fa-meteor',                     winId: null, action: 'asteroids'   },
+    { label: 'flappy bird', icon: 'fa-solid fa-dove',                       winId: null, action: 'flappybird'  },
+    { label: 'wordle',      icon: 'fa-solid fa-spell-check',                winId: null, action: 'wordle'      },
+    { label: 'typing',      icon: 'fa-solid fa-keyboard',                   winId: null, action: 'typing'      },
+    { label: 'memory',      icon: 'fa-solid fa-brain',                      winId: null, action: 'memory'      },
     { label: 'doom',        icon: 'fa-solid fa-skull',                      winId: null, action: 'doom'        },
     { label: 'help.md',     icon: 'fa-regular fa-file-lines', winId: null,                 action: 'help'     },
     { label: 'thanks.md',   icon: 'fa-regular fa-file-lines', winId: null,                 action: 'thanks'   },
@@ -108,6 +113,11 @@ window.Site = window.Site || {};
           if (app.action === 'minesweeper') { window.Site.openMinesweeper(); return; }
           if (app.action === 'pong')        { window.Site.openPong();       return; }
           if (app.action === 'breakout')    { window.Site.openBreakout();   return; }
+          if (app.action === 'asteroids')   { window.Site.openAsteroids();  return; }
+          if (app.action === 'flappybird')  { window.Site.openFlappyBird(); return; }
+          if (app.action === 'wordle')      { window.Site.openWordle();     return; }
+          if (app.action === 'typing')      { window.Site.openTyping();     return; }
+          if (app.action === 'memory')      { window.Site.openMemory();     return; }
           if (app.action === 'doom')        { window.Site.openDoom();       return; }
           if (app.action === 'welcome')      { if (window.Site.openWelcome) window.Site.openWelcome(); return; }
           if (app.winId) {

@@ -54,7 +54,8 @@ window.Site = window.Site || {};
             render();
           } else {
             var content = vfs ? vfs.cat(name, cwd) : '';
-            if (window.Site.openEditor) window.Site.openEditor(name, content || '');
+            var absPath = pathStr() + '/' + name;
+            if (window.Site.openEditor) window.Site.openEditor(name, content || '', absPath);
           }
         });
       });

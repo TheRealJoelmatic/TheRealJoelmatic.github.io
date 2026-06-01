@@ -551,6 +551,20 @@
 .shell-echo-cmd,
 .shell-input-display { color: var(--text); font-size: 12px; }
 
+.cmd-text,
+.shell-echo-cmd,
+.shell-input-display,
+.shell-input-left,
+.shell-input-right {
+  white-space: pre;
+}
+
+.shell-input-left,
+.shell-input-right {
+  color: var(--text);
+  font-size: 12px;
+}
+
 
 .shell-output-block {
   margin: 3px 0 4px 4px;

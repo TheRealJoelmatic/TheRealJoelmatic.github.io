@@ -38,10 +38,16 @@ function colorDots() {
 }
 
 
-function promptSegs(cwd) {
+function promptSegs(cwd, home) {
   var u    = esc(PROFILE.user);
   var h    = esc(PROFILE.host);
-  var path = cwd && cwd.length ? '~/' + cwd.join('/') : '~';
+  var segs = Array.isArray(cwd) ? cwd : [];
+  var homeSegs = home || ['home', PROFILE.user];
+  var inHome = homeSegs.every(function(s, i) { return segs[i] === s; });
+  var path = inHome
+    ? (segs.length > homeSegs.length ? '~/' + segs.slice(homeSegs.length).join('/') : '~')
+    : ('/' + segs.join('/'));
+  if (path === '') path = '/';
   return '<span class="p10k-seg p10k-seg-user"><i class="fa-solid fa-user"></i>'+u+'@'+h+'</span>'+
     '<span class="p10k-seg p10k-seg-dir"><i class="fa-solid fa-folder"></i>'+esc(path)+'</span>'+
     '<span class="p10k-seg p10k-seg-git"><i class="fa-solid fa-code-branch"></i>main</span>';
@@ -65,15 +71,18 @@ function buildFastfetch() {
 function createShell(outputEl) {
   var histEl       = null;
   var inputEl      = null;
+  var inputLeftEl  = null;
+  var inputRightEl = null;
   var activeLineEl = null;
   var cur          = '';
+  var cursorPos    = 0;
   var active       = false;
   var cmdHist      = [];
   var histIdx      = -1;
   var pipesOn      = false;
   var pipesStopFn  = null;
   var pipesOverlay = null;
-  var cwd          = [];   // [] means /home/joel (home dir)
+  var cwd          = null;
 
   function scrollBottom() { outputEl.scrollTop = outputEl.scrollHeight; }
 
@@ -88,13 +97,145 @@ function createShell(outputEl) {
     if (activeLineEl) {
       activeLineEl.innerHTML =
         '<div class="terminal-prompt shell-active-prompt">'+
-        promptSegs(cwd)+
-        ' <span class="shell-input-display"></span>'+
+        promptSegs(cwd, HOME)+
+        ' <span class="shell-input-left"></span>'+
         '<span class="prompt-cursor"></span></div>';
-      inputEl = activeLineEl.querySelector('.shell-input-display');
+      inputLeftEl = activeLineEl.querySelector('.shell-input-left');
+      inputRightEl = document.createElement('span');
+      inputRightEl.className = 'shell-input-right';
+      activeLineEl.querySelector('.shell-active-prompt').appendChild(inputRightEl);
+      inputEl = inputLeftEl;
     }
-    if (inputEl) inputEl.textContent = cur;
+    if (inputLeftEl) inputLeftEl.textContent = cur.slice(0, cursorPos);
+    if (inputRightEl) inputRightEl.textContent = cur.slice(cursorPos);
     scrollBottom();
+  }
+
+  function moveCursor(delta) {
+    cursorPos = Math.max(0, Math.min(cur.length, cursorPos + delta));
+    updateInput();
+  }
+
+  function setLine(next) {
+    cur = next;
+    cursorPos = cur.length;
+    updateInput();
+  }
+
+  function tokenize(input) {
+    var out = [];
+    var tok = '';
+    var q = null;
+    var escNext = false;
+    for (var i = 0; i < input.length; i++) {
+      var ch = input[i];
+      if (escNext) {
+        tok += ch;
+        escNext = false;
+        continue;
+      }
+      if (ch === '\\') {
+        escNext = true;
+        continue;
+      }
+      if (q) {
+        if (ch === q) q = null;
+        else tok += ch;
+        continue;
+      }
+      if (ch === '"' || ch === '\'') {
+        q = ch;
+        continue;
+      }
+      if (/\s/.test(ch)) {
+        if (tok) { out.push(tok); tok = ''; }
+      } else {
+        tok += ch;
+      }
+    }
+    if (escNext) tok += '\\';
+    if (tok) out.push(tok);
+    return out;
+  }
+
+  function longestCommonPrefix(list) {
+    if (!list.length) return '';
+    var p = list[0];
+    for (var i = 1; i < list.length; i++) {
+      while (list[i].indexOf(p) !== 0 && p) p = p.slice(0, -1);
+      if (!p) break;
+    }
+    return p;
+  }
+
+  function tabComplete() {
+    var left = cur.slice(0, cursorPos);
+    var right = cur.slice(cursorPos);
+    var start = left.lastIndexOf(' ') + 1;
+    var rightMatch = right.match(/^[^\s]*/);
+    var tailLen = rightMatch ? rightMatch[0].length : 0;
+    var end = cursorPos + tailLen;
+    var token = cur.slice(start, end);
+    var isFirstToken = start === 0;
+    var options = [];
+    var tokenBase = token;
+    var dirPrefix = '';
+
+    if (isFirstToken && token.indexOf('/') === -1) {
+      options = Object.keys(CMDS).concat([
+        'echo', 'cat', 'git', 'cd', 'ls', 'touch', 'mkdir', 'rm',
+        'rmdir', 'mv', 'cp', 'kate', 'history', 'date', 'hostname', 'id', 'exit'
+      ]).filter(function (v, i, arr) {
+        return arr.indexOf(v) === i;
+      }).filter(function(v) {
+        return v.indexOf(token) === 0;
+      });
+    } else {
+      if (token.indexOf('/') !== -1) {
+        var li = token.lastIndexOf('/');
+        dirPrefix = token.slice(0, li + 1);
+        tokenBase = token.slice(li + 1);
+      }
+      var entries = vfs.ls(dirPrefix || '.', vfsCwd()) || [];
+      options = entries.map(function(e) {
+        return {
+          text: dirPrefix + e.name + (e.node.type === 'dir' ? '/' : ''),
+          raw: dirPrefix + e.name
+        };
+      }).filter(function(e) {
+        return e.raw.indexOf(dirPrefix + tokenBase) === 0;
+      }).map(function(e) { return e.text; });
+    }
+
+    if (!options.length) return;
+
+    if (options.length === 1) {
+      var picked = options[0];
+      var next = cur.slice(0, start) + picked + cur.slice(end);
+      var needsSpace = picked.charAt(picked.length - 1) !== '/' && !/\s$/.test(next.slice(0, start + picked.length));
+      if (needsSpace && (start + picked.length === next.length || /\s/.test(next[start + picked.length]))) {
+        next = next.slice(0, start + picked.length) + ' ' + next.slice(start + picked.length);
+        cursorPos = start + picked.length + 1;
+      } else {
+        cursorPos = start + picked.length;
+      }
+      cur = next;
+      updateInput();
+      return;
+    }
+
+    var common = longestCommonPrefix(options);
+    if (common && common.length > token.length) {
+      cur = cur.slice(0, start) + common + cur.slice(end);
+      cursorPos = start + common.length;
+      updateInput();
+      return;
+    }
+
+    addLine('<div class="shell-output-block">'+options.map(function(o) {
+      return '<div class="shell-output-line"><span class="ff-val c-blue">'+esc(o)+'</span></div>';
+    }).join('')+'</div>');
+    updateInput();
   }
 
 
@@ -130,9 +271,10 @@ function createShell(outputEl) {
 
   
   var HOME = ['home', PROFILE.user];
+  cwd = HOME.slice();
 
   
-  function vfsCwd() { return HOME.concat(cwd); }
+  function vfsCwd() { return cwd.slice(); }
 
 
   function cmdFastfetch() { addLine(buildFastfetch()); }
@@ -177,7 +319,8 @@ function createShell(outputEl) {
   function cmdWhoami() { addLine('<div class="shell-output-line">'+esc(PROFILE.user)+'</div>'); }
 
   function cmdPwd() {
-    var abs = '/' + HOME.join('/') + (cwd.length ? '/' + cwd.join('/') : '');
+    var abs = '/' + cwd.join('/');
+    if (abs === '') abs = '/';
     addLine('<div class="shell-output-line">'+esc(abs)+'</div>');
   }
 
@@ -213,17 +356,22 @@ function createShell(outputEl) {
   function cmdKate(args) {
     if (!args.length) { addLine('<div class="shell-output-line shell-error">zsh: kate: missing file operand</div>'); return; }
     var path    = args[0];
+    var absPath = vfs.absPath(path, vfsCwd());
     var content = vfs.cat(path, vfsCwd());
     if (content === 'Is a directory') {
       addLine('<div class="shell-output-line shell-error">zsh: kate: '+esc(path)+': Is a directory</div>'); return;
     }
     if (content === null) {
-      vfs.touch(path, vfsCwd());
+      var created = vfs.touch(path, vfsCwd());
+      if (created !== true) {
+        addLine('<div class="shell-output-line shell-error">zsh: kate: '+esc(path)+': '+esc(created)+'</div>');
+        return;
+      }
       content = '';
     }
     var filename = path.split('/').pop();
     if (window.Site.openEditor) {
-      window.Site.openEditor(filename, content);
+      window.Site.openEditor(filename, content, absPath);
     } else {
       addLine('<div class="shell-output-line shell-error">zsh: kate: editor not available</div>');
     }
@@ -288,31 +436,22 @@ function createShell(outputEl) {
   }
 
   function cmdCd(args) {
-    var target = (!args || !args.length || args[0] === '~') ? [] : null;
-    if (target === null) {
-      var newVfsCwd = vfs.normSegments(args[0], vfsCwd());
-      var node = vfs.resolve(args[0], vfsCwd());
-      if (!node) {
-        addLine('<div class="shell-output-line shell-error">zsh: cd: '+esc(args[0])+': No such file or directory</div>');
-        return;
-      }
-      if (node.type !== 'dir') {
-        addLine('<div class="shell-output-line shell-error">zsh: cd: '+esc(args[0])+': Not a directory</div>');
-        return;
-      }
-      if (newVfsCwd.length >= HOME.length) {
-        var matchHome = HOME.every(function(s, i) { return newVfsCwd[i] === s; });
-        if (matchHome) {
-          cwd = newVfsCwd.slice(HOME.length);
-        } else {
-          cwd = newVfsCwd; // outside home; still track it
-        }
-      } else {
-        cwd = newVfsCwd;
-      }
-    } else {
-      cwd = [];
+    if (!args || !args.length || args[0] === '~') {
+      cwd = HOME.slice();
+      updateInput();
+      return;
     }
+    var newVfsCwd = vfs.normSegments(args[0], vfsCwd());
+    var node = vfs.resolve(args[0], vfsCwd());
+    if (!node) {
+      addLine('<div class="shell-output-line shell-error">zsh: cd: '+esc(args[0])+': No such file or directory</div>');
+      return;
+    }
+    if (node.type !== 'dir') {
+      addLine('<div class="shell-output-line shell-error">zsh: cd: '+esc(args[0])+': Not a directory</div>');
+      return;
+    }
+    cwd = newVfsCwd;
     updateInput();
   }
 
@@ -342,6 +481,34 @@ function createShell(outputEl) {
     }
   }
 
+  function cmdHistory() {
+    if (!cmdHist.length) {
+      addLine('<div class="shell-output-line"><span class="ff-val c-subtext0">history: empty</span></div>');
+      return;
+    }
+    var rows = cmdHist.map(function(c, i) {
+      return '<div class="shell-output-line"><span class="ff-val c-subtext0">'+String(i + 1).padStart(4,' ')+'</span>  '+esc(c)+'</div>';
+    }).join('');
+    addLine('<div class="shell-output-block">'+rows+'</div>');
+  }
+
+  function cmdDate() {
+    addLine('<div class="shell-output-line">'+esc(new Date().toString())+'</div>');
+  }
+
+  function cmdHostname() {
+    addLine('<div class="shell-output-line">'+esc(PROFILE.host)+'</div>');
+  }
+
+  function cmdId() {
+    var u = esc(PROFILE.user);
+    addLine('<div class="shell-output-line">uid=1000('+u+') gid=1000('+u+') groups=1000('+u+'),998(wheel)</div>');
+  }
+
+  function cmdExit() {
+    addLine('<div class="shell-output-line"><span class="ff-val c-yellow">This terminal is persistent in the portfolio UI. Use Shift+Q to close the window.</span></div>');
+  }
+
   var CMDS = {
     'fastfetch':  cmdFastfetch,
     'neofetch':   cmdFastfetch,
@@ -353,14 +520,20 @@ function createShell(outputEl) {
     'uptime':     cmdUptime,
     'uname':      cmdUname,
     'uname -a':   cmdUname,
+    'history':    cmdHistory,
+    'date':       cmdDate,
+    'hostname':   cmdHostname,
+    'id':         cmdId,
+    'exit':       cmdExit,
   };
 
 
   function execute(raw) {
     var cmd   = raw.trim();
-    addLine('<div class="terminal-prompt">'+promptSegs(cwd)+' <span class="shell-echo-cmd">'+esc(cmd)+'</span></div>');
+    addLine('<div class="terminal-prompt">'+promptSegs(cwd, HOME)+' <span class="shell-echo-cmd">'+esc(cmd)+'</span></div>');
     if (!cmd) return;
-    var parts = cmd.split(/\s+/);
+    var parts = tokenize(cmd);
+    if (!parts.length) return;
     var verb  = parts[0].toLowerCase();
     var args  = parts.slice(1);
     var fn    = CMDS[cmd.toLowerCase()];
@@ -393,9 +566,9 @@ function createShell(outputEl) {
       e.preventDefault();
       if (pipesOn) {
         stopPipes();
-        addLine('<div class="terminal-prompt">'+promptSegs(cwd)+' <span class="shell-echo-cmd">pipes.sh</span><span class="ff-val c-red"> ^C</span></div>');
+        addLine('<div class="terminal-prompt">'+promptSegs(cwd, HOME)+' <span class="shell-echo-cmd">pipes.sh</span><span class="ff-val c-red"> ^C</span></div>');
       } else {
-        addLine('<div class="terminal-prompt">'+promptSegs(cwd)+' <span class="shell-echo-cmd">'+esc(cur)+'</span><span class="ff-val c-red"> ^C</span></div>');
+        addLine('<div class="terminal-prompt">'+promptSegs(cwd, HOME)+' <span class="shell-echo-cmd">'+esc(cur)+'</span><span class="ff-val c-red"> ^C</span></div>');
         cur = ''; updateInput();
       }
       return;
@@ -407,28 +580,101 @@ function createShell(outputEl) {
       e.preventDefault();
       if (histIdx < cmdHist.length - 1) {
         histIdx++;
-        cur = cmdHist[cmdHist.length - 1 - histIdx];
-        updateInput();
+        setLine(cmdHist[cmdHist.length - 1 - histIdx]);
       }
       return;
     }
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      if (histIdx > 0) { histIdx--; cur = cmdHist[cmdHist.length - 1 - histIdx]; }
-      else { histIdx = -1; cur = ''; }
-      updateInput(); return;
+      if (histIdx > 0) { histIdx--; setLine(cmdHist[cmdHist.length - 1 - histIdx]); }
+      else { histIdx = -1; setLine(''); }
+      return;
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      moveCursor(-1);
+      return;
+    }
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      moveCursor(1);
+      return;
+    }
+    if (e.key === 'Home') {
+      e.preventDefault();
+      cursorPos = 0;
+      updateInput();
+      return;
+    }
+    if (e.key === 'End') {
+      e.preventDefault();
+      cursorPos = cur.length;
+      updateInput();
+      return;
+    }
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      tabComplete();
+      return;
     }
     if (e.key === 'Enter') {
       e.preventDefault();
       if (cur.trim()) { cmdHist.push(cur.trim()); }
       histIdx = -1;
-      execute(cur); cur = ''; updateInput(); return;
+      execute(cur); cur = ''; cursorPos = 0; updateInput(); return;
     }
     if (e.key === 'Backspace') {
-      e.preventDefault(); cur = cur.slice(0,-1); updateInput(); return;
+      e.preventDefault();
+      if (cursorPos > 0) {
+        cur = cur.slice(0, cursorPos - 1) + cur.slice(cursorPos);
+        cursorPos--;
+        updateInput();
+      }
+      return;
+    }
+    if (e.key === 'Delete') {
+      e.preventDefault();
+      if (cursorPos < cur.length) {
+        cur = cur.slice(0, cursorPos) + cur.slice(cursorPos + 1);
+        updateInput();
+      }
+      return;
+    }
+    if (e.ctrlKey && (e.key === 'a' || e.key === 'A')) {
+      e.preventDefault();
+      cursorPos = 0;
+      updateInput();
+      return;
+    }
+    if (e.ctrlKey && (e.key === 'e' || e.key === 'E')) {
+      e.preventDefault();
+      cursorPos = cur.length;
+      updateInput();
+      return;
+    }
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+      e.preventDefault();
+      cur = cur.slice(cursorPos);
+      cursorPos = 0;
+      updateInput();
+      return;
+    }
+    if (e.ctrlKey && (e.key === 'k' || e.key === 'K')) {
+      e.preventDefault();
+      cur = cur.slice(0, cursorPos);
+      updateInput();
+      return;
+    }
+    if (e.ctrlKey && (e.key === 'l' || e.key === 'L')) {
+      e.preventDefault();
+      cmdClear();
+      return;
     }
     if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
-      e.preventDefault(); cur += e.key; updateInput();
+      e.preventDefault();
+      cur = cur.slice(0, cursorPos) + e.key + cur.slice(cursorPos);
+      cursorPos++;
+      updateInput();
     }
   }
 
@@ -447,11 +693,15 @@ function createShell(outputEl) {
     activeLineEl = document.createElement('div');
     activeLineEl.innerHTML =
       '<div class="terminal-prompt shell-active-prompt">'+
-      promptSegs(cwd)+
-      ' <span class="shell-input-display"></span>'+
+      promptSegs(cwd, HOME)+
+      ' <span class="shell-input-left"></span>'+
       '<span class="prompt-cursor"></span></div>';
     outputEl.appendChild(activeLineEl);
-    inputEl = activeLineEl.querySelector('.shell-input-display');
+    inputLeftEl = activeLineEl.querySelector('.shell-input-left');
+    inputRightEl = document.createElement('span');
+    inputRightEl.className = 'shell-input-right';
+    activeLineEl.querySelector('.shell-active-prompt').appendChild(inputRightEl);
+    inputEl = inputLeftEl;
 
     active = true;
     outputEl.setAttribute('tabindex','0');
@@ -469,7 +719,7 @@ function typeCmd(outputEl, cmdStr, onDone) {
   var uid = Math.random().toString(36).slice(2,7);
   outputEl.innerHTML =
     '<div class="terminal-prompt cmd-line">'+
-    promptSegs([])+
+    promptSegs(['home', PROFILE.user], ['home', PROFILE.user])+
     ' <span id="tc-'+uid+'" class="cmd-text"></span>'+
     '<span class="prompt-cursor" id="cr-'+uid+'"></span></div>';
   var typedEl  = document.getElementById('tc-'+uid);

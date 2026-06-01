@@ -60,8 +60,9 @@ window.Site = window.Site || {};
   }
 
 
-  function openEditor(filename, content) {
+  function openEditor(filename, content, filePath) {
     var rawContent = content || '';
+    var savePath = (filePath && filePath.charAt(0) === '/') ? filePath : '/home/joel/' + filename;
 
     if (window.innerWidth <= 780) {
       var overlay = document.createElement('div');
@@ -134,7 +135,7 @@ window.Site = window.Site || {};
       textarea.addEventListener('input', function () {
         rawContent = textarea.value;
         updateGutterM();
-        if (window.Site.vfs) window.Site.vfs.write('/home/joel/' + filename, rawContent, [], false);
+        if (window.Site.vfs) window.Site.vfs.write(savePath, rawContent, [], false);
       });
 
       var isPreviewM = true;
@@ -244,7 +245,7 @@ window.Site = window.Site || {};
     textarea.addEventListener('input', function () {
       rawContent = textarea.value;
       updateGutter();
-      if (window.Site.vfs) window.Site.vfs.write('/home/joel/' + filename, rawContent, [], false);
+      if (window.Site.vfs) window.Site.vfs.write(savePath, rawContent, [], false);
     });
 
     previewBtn.addEventListener('click', function () {
