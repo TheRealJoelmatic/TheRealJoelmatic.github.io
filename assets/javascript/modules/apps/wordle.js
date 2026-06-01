@@ -9,7 +9,8 @@ window.Site = window.Site || {};
     );
     if (!r) return;
 
-    var WORDS = [
+    var WORDS_URL = 'https://raw.githubusercontent.com/dwyl/english-words/refs/heads/master/words.txt';
+    var FALLBACK_WORDS = [
       'ABOUT','AFTER','APPLE','BRAIN','BRICK','BRING','CHAIR','CLOUD','CRANE','DREAM',
       'DRIVE','EARTH','FLAME','FRAME','FRESH','GHOST','GLASS','GRASS','GREEN','HEART',
       'HOUSE','JUICE','KNIFE','LIGHT','MANGO','METAL','MIGHT','MOUSE','NERVE','NIGHT',
@@ -19,6 +20,8 @@ window.Site = window.Site || {};
       'THINK','THORN','TIGER','TOWER','TRACK','TRAIN','TRUST','UNITY','VALUE','WATER',
       'WHALE','WORLD','YOUTH'
     ];
+    var WORDS = FALLBACK_WORDS.slice();
+    var WORD_SET = {};
 
     var MAX_ROWS = 6;
     var WORD_LEN = 5;
@@ -63,6 +66,50 @@ window.Site = window.Site || {};
     function setStatus(msg, color) {
       status.textContent = msg || '';
       status.style.color = color || 'var(--subtext0)';
+    }
+
+    function rebuildWordSet() {
+      WORD_SET = {};
+      for (var i = 0; i < WORDS.length; i++) {
+        WORD_SET[WORDS[i]] = true;
+      }
+    }
+
+    function parseExternalWords(raw) {
+      var lines = String(raw || '').split(/\r?\n/);
+      var seen = {};
+      var out = [];
+      for (var i = 0; i < lines.length; i++) {
+        var w = lines[i].trim().toUpperCase();
+        if (!/^[A-Z]{5}$/.test(w)) continue;
+        if (seen[w]) continue;
+        seen[w] = true;
+        out.push(w);
+      }
+      return out;
+    }
+
+    function loadExternalWordList() {
+      setStatus('Loading word list...', 'var(--blue)');
+      return fetch(WORDS_URL, { cache: 'no-store' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Failed to fetch words');
+          return res.text();
+        })
+        .then(function (txt) {
+          var parsed = parseExternalWords(txt);
+          if (!parsed.length) throw new Error('No 5-letter words found');
+          WORDS = parsed;
+          rebuildWordSet();
+          restart();
+          setStatus('Loaded ' + WORDS.length + ' words from dwyl list', 'var(--green)');
+        })
+        .catch(function () {
+          WORDS = FALLBACK_WORDS.slice();
+          rebuildWordSet();
+          restart();
+          setStatus('Using fallback word list', 'var(--peach)');
+        });
     }
 
     function scoreForKey(prev, next) {
@@ -194,7 +241,7 @@ window.Site = window.Site || {};
         setStatus('Not enough letters', 'var(--peach)');
         return;
       }
-      if (WORDS.indexOf(current) === -1) {
+      if (!WORD_SET[current]) {
         setStatus('Word not in list', 'var(--peach)');
         return;
       }
@@ -302,7 +349,9 @@ window.Site = window.Site || {};
     });
     obs.observe(document.body, { childList: true, subtree: true });
 
+    rebuildWordSet();
     restart();
+    loadExternalWordList();
   }
 
   window.Site.openWordle = openWordle;

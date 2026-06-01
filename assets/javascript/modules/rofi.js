@@ -31,6 +31,7 @@ window.Site = window.Site || {};
     { label: 'asteroids',   icon: 'fa-solid fa-meteor',                     winId: null, action: 'asteroids'   },
     { label: 'flappy bird', icon: 'fa-solid fa-dove',                       winId: null, action: 'flappybird'  },
     { label: 'wordle',      icon: 'fa-solid fa-spell-check',                winId: null, action: 'wordle'      },
+    { label: 'simon says',  icon: 'fa-solid fa-hand-pointer',               winId: null, action: 'simon'       },
     { label: 'typing',      icon: 'fa-solid fa-keyboard',                   winId: null, action: 'typing'      },
     { label: 'memory',      icon: 'fa-solid fa-brain',                      winId: null, action: 'memory'      },
     { label: 'doom',        icon: 'fa-solid fa-skull',                      winId: null, action: 'doom'        },
@@ -116,6 +117,7 @@ window.Site = window.Site || {};
           if (app.action === 'asteroids')   { window.Site.openAsteroids();  return; }
           if (app.action === 'flappybird')  { window.Site.openFlappyBird(); return; }
           if (app.action === 'wordle')      { window.Site.openWordle();     return; }
+          if (app.action === 'simon')       { window.Site.openSimon();      return; }
           if (app.action === 'typing')      { window.Site.openTyping();     return; }
           if (app.action === 'memory')      { window.Site.openMemory();     return; }
           if (app.action === 'doom')        { window.Site.openDoom();       return; }

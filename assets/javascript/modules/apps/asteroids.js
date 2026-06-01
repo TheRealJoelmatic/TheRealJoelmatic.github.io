@@ -185,7 +185,7 @@ window.Site = window.Site || {};
 
     var controls = document.createElement('div');
     controls.style.cssText = 'font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--subtext0);';
-    controls.textContent = 'Controls: WASD move | Auto-aim enabled | Hold Space shoot';
+    controls.textContent = 'Controls: WASD move | Auto-aim enabled | Auto-shoot always on';
     r.body.appendChild(controls);
 
     var status = document.createElement('div');
@@ -849,7 +849,7 @@ window.Site = window.Site || {};
         closeRangeBonus: 0,
         longRangeBonus: 0,
       };
-      controls.textContent = 'Controls: WASD move | Auto-aim enabled | Hold Space shoot';
+      controls.textContent = 'Controls: WASD move | Auto-aim enabled | Auto-shoot always on';
       updateHud();
       startWave();
     }
@@ -957,9 +957,9 @@ window.Site = window.Site || {};
     }
 
     function shoot() {
-      if (state !== 'playing') return;
+      if (!ship) return;
       var spread = 0.16;
-      var count = upgrades.multiShot;
+      var count = Math.max(1, upgrades.multiShot || 1);
       var center = (count - 1) / 2;
       for (var i = 0; i < count; i++) {
         var a = ship.a + (i - center) * spread;
@@ -1058,10 +1058,12 @@ window.Site = window.Site || {};
       if (ship.invuln > 0) ship.invuln -= dtMs;
       if (damageFlash > 0) damageFlash -= dtMs;
 
+      // Force the same behavior as holding Space all the time.
+      keys[' '] = true;
       fireCooldown -= dtMs;
-      if ((keys[' '] || keys.Spacebar) && fireCooldown <= 0) {
+      if (keys[' '] && fireCooldown <= 0) {
         shoot();
-        fireCooldown = upgrades.fireMs;
+        fireCooldown = Math.max(40, upgrades.fireMs || 165);
       }
     }
 
@@ -1677,6 +1679,7 @@ window.Site = window.Site || {};
         running = false;
         return;
       }
+      if (e.key === ' ' || e.code === 'Space') return;
       if (r.win.classList.contains('wm-hidden') || !r.win.classList.contains('focused')) {
         if (e.type === 'keyup') keys[e.key] = false;
         return;
@@ -1684,7 +1687,6 @@ window.Site = window.Site || {};
 
       if (e.type === 'keydown') {
         keys[e.key] = true;
-        if (e.key === ' ') e.preventDefault();
         if (e.key === 'Enter' && state === 'gameover') {
           e.preventDefault();
           clearOverlay();
