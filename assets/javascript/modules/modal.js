@@ -56,6 +56,7 @@ function ensureDOM() {
 
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && win.classList.contains('open')) {
+      e.preventDefault();
       window.Site.closeWorkModal();
     }
   });
@@ -142,12 +143,17 @@ window.Site.openWorkModal = function(idx) {
   }
 
   win.classList.add('open');
+  if (window.Site.focusWindow) window.Site.focusWindow(win);
   centreWindow();
   document.getElementById('work-modal-close').focus();
 };
 
 window.Site.closeWorkModal = function() {
-  if (win) win.classList.remove('open');
+  if (win) {
+    win.classList.remove('open');
+    if (window.Site.clearFocusWindow) window.Site.clearFocusWindow(win);
+    if (window.Site.focusTopWindow) window.Site.focusTopWindow(win);
+  }
 };
 
 
@@ -195,9 +201,9 @@ function ensureVouchDOM() {
 
   document.addEventListener('keydown', function(e) {
     if (!vouchWin.classList.contains('open')) return;
-    if (e.key === 'ArrowLeft')  navigateVouch(-1);
-    if (e.key === 'ArrowRight') navigateVouch(+1);
-    if (e.key === 'Escape')     window.Site.closeVouchLightbox();
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); navigateVouch(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); navigateVouch(+1); }
+    if (e.key === 'Escape')     { e.preventDefault(); window.Site.closeVouchLightbox(); }
   });
 
   attachDrag(vouchWin, vouchWin.querySelector('.vouch-modal-titlebar'));
@@ -227,12 +233,17 @@ window.Site.openVouchLightbox = function(idx) {
   vouchCurrent = idx || 0;
   setVouchFrame(vouchCurrent);
   vouchWin.classList.add('open');
+  if (window.Site.focusWindow) window.Site.focusWindow(vouchWin);
   centreVouchWindow();
   vouchWin.querySelector('#vouch-modal-close').focus();
 };
 
 window.Site.closeVouchLightbox = function() {
-  if (vouchWin) vouchWin.classList.remove('open');
+  if (vouchWin) {
+    vouchWin.classList.remove('open');
+    if (window.Site.clearFocusWindow) window.Site.clearFocusWindow(vouchWin);
+    if (window.Site.focusTopWindow) window.Site.focusTopWindow(vouchWin);
+  }
 };
 
 })(); // end IIFE

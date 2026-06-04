@@ -30,9 +30,44 @@ window.Site = window.Site || {};
     return el ? el.textContent.trim() : '';
   }
 
+  function isWindowFocusable(winEl) {
+    if (!winEl || !winEl.classList || !winEl.classList.contains('window')) return false;
+    if (!document.body.contains(winEl)) return false;
+    if (winEl.classList.contains('wm-hidden')) return false;
+    if (winEl.getClientRects && winEl.getClientRects().length === 0) return false;
+    return true;
+  }
+
+  function sanitizeFocused() {
+    if (focusedEl && !isWindowFocusable(focusedEl)) {
+      focusedEl.classList.remove('focused');
+      focusedEl = null;
+    }
+  }
+
+  function getTopFocusableWindow(excludeEl) {
+    var all = document.querySelectorAll('.window');
+    var top = null;
+    var topZ = -Infinity;
+    for (var i = 0; i < all.length; i++) {
+      var w = all[i];
+      if (excludeEl && w === excludeEl) continue;
+      if (!isWindowFocusable(w)) continue;
+      var z = parseInt(w.style.zIndex, 10);
+      if (isNaN(z)) z = 0;
+      if (!top || z >= topZ) {
+        top = w;
+        topZ = z;
+      }
+    }
+    return top;
+  }
+
   
   function applyFocus(winEl) {
-    if (!winEl) return;
+    if (!isWindowFocusable(winEl)) return;
+
+    sanitizeFocused();
 
     
     if (focusedEl && focusedEl !== winEl) {
@@ -58,6 +93,17 @@ window.Site = window.Site || {};
     
     if (window.Site.setWindowTitle) {
       window.Site.setWindowTitle(getTitleOf(winEl));
+    }
+  }
+
+  function clearFocus(winEl) {
+    sanitizeFocused();
+    if (!focusedEl) return;
+    if (winEl && focusedEl !== winEl) return;
+    focusedEl.classList.remove('focused');
+    focusedEl = null;
+    if (window.Site.setWindowTitle) {
+      window.Site.setWindowTitle('');
     }
   }
 
@@ -122,7 +168,7 @@ window.Site = window.Site || {};
     });
 
     
-    var first = document.querySelector('.window');
+    var first = getTopFocusableWindow(null);
     if (first) applyFocus(first);
   }
 
@@ -130,6 +176,24 @@ window.Site = window.Site || {};
 
   window.Site.focusWindow = function(el) {
     applyFocus(el);
+  };
+
+  window.Site.clearFocusWindow = function(el) {
+    clearFocus(el || null);
+  };
+
+  window.Site.getFocusedWindow = function() {
+    sanitizeFocused();
+    if (focusedEl) return focusedEl;
+    var fallback = getTopFocusableWindow(null);
+    if (fallback) applyFocus(fallback);
+    return focusedEl;
+  };
+
+  window.Site.focusTopWindow = function(excludeEl) {
+    var top = getTopFocusableWindow(excludeEl || null);
+    if (top) applyFocus(top);
+    return top || null;
   };
 
   window.Site.toggleMaximize = function(el) {

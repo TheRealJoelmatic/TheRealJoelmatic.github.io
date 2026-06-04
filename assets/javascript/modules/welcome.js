@@ -169,9 +169,9 @@ window.Site = window.Site || {};
 
   function onKey(e) {
     if (!overlay || overlay.style.display === 'none') return;
-    if (e.key === 'Escape')      { close(); }
-    if (e.key === 'ArrowRight')  { goTo(curPage + 1); }
-    if (e.key === 'ArrowLeft')   { goTo(curPage - 1); }
+    if (e.key === 'Escape')      { e.preventDefault(); close(); }
+    if (e.key === 'ArrowRight')  { e.preventDefault(); goTo(curPage + 1); }
+    if (e.key === 'ArrowLeft')   { e.preventDefault(); goTo(curPage - 1); }
   }
 
   function open() {
@@ -191,7 +191,10 @@ window.Site = window.Site || {};
 
   
   document.addEventListener('keydown', function (e) {
+    var t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
     if (e.shiftKey && (e.key === '?' || e.key === '/')) {
+      e.preventDefault();
       goTo(0);
       open();
     }

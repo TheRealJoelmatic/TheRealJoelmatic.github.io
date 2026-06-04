@@ -35,11 +35,47 @@ window.Site = window.Site || {};
 
   function getDesktop() { return document.getElementById('desktop'); }
 
-  function getFocused() { return document.querySelector('.window.focused'); }
+  function getFocused() {
+    if (window.Site.getFocusedWindow) return window.Site.getFocusedWindow();
+    return document.querySelector('.window.focused:not(.wm-hidden)');
+  }
 
   function isInput() {
-    var t = document.activeElement && document.activeElement.tagName.toLowerCase();
-    return t === 'input' || t === 'textarea';
+    var a = document.activeElement;
+    if (!a || !a.tagName) return false;
+    if (a.isContentEditable) return true;
+    var t = a.tagName.toLowerCase();
+    return t === 'input' || t === 'textarea' || t === 'select';
+  }
+
+  function isEditableTarget(el) {
+    if (!el || !el.tagName) return false;
+    if (el.isContentEditable) return true;
+    var t = el.tagName.toLowerCase();
+    return t === 'input' || t === 'textarea' || t === 'select';
+  }
+
+  function hasBlockingOverlay() {
+    var rofi = document.querySelector('.rofi-overlay');
+    if (rofi) return true;
+
+    var welcome = document.getElementById('wlc-overlay');
+    if (welcome && welcome.style.display !== 'none') return true;
+
+    var workModal = document.getElementById('work-modal-win');
+    if (workModal && workModal.classList.contains('open')) return true;
+
+    var vouchModal = document.getElementById('vouch-modal-win');
+    if (vouchModal && vouchModal.classList.contains('open')) return true;
+
+    return false;
+  }
+
+  function shouldIgnoreGlobalShortcut(e) {
+    if (e.defaultPrevented) return true;
+    if (isInput() || isEditableTarget(e.target)) return true;
+    if (hasBlockingOverlay()) return true;
+    return false;
   }
 
   function isMobile() { return window.innerWidth <= 780; }
@@ -272,8 +308,11 @@ window.Site = window.Site || {};
     if (win.classList.contains('floating')) exitFloat(win);
 
     
-    if (win.classList.contains('editor-window')) {
+    if (window.Site.clearFocusWindow) window.Site.clearFocusWindow(win);
+
+    if (win.classList.contains('editor-window') || win.classList.contains('app-window')) {
       if (win.parentNode) win.parentNode.removeChild(win);
+      if (window.Site.focusTopWindow) window.Site.focusTopWindow(null);
       reflowWindows();
       return;
     }
@@ -285,6 +324,7 @@ window.Site = window.Site || {};
     }
     
     reflowWindows();
+    if (window.Site.focusTopWindow) window.Site.focusTopWindow(win);
   }
 
   
@@ -440,7 +480,7 @@ window.Site = window.Site || {};
 
   function initKeybinds() {
     document.addEventListener('keydown', function (e) {
-      if (isInput()) return;
+      if (shouldIgnoreGlobalShortcut(e)) return;
 
       var shift   = e.shiftKey;
       var focused = getFocused();
